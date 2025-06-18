@@ -462,36 +462,50 @@
                 </div>
                 
                 <div class="options-container">
-                    <div class="option" onclick="selectOption(this, '32956T170/DB')">
-                        <input type="radio" name="respuesta" class="option-radio" value="32956T170/DB">
+                    <div class="option" onclick="selectOption(this, 'a')">
+                        <input type="radio" name="respuesta" class="option-radio" value="a">
                         <div class="option-text">
                             32956T170/DB
                         </div>
                     </div>
                     
-                    <div class="option" onclick="selectOption(this, '617479 B-C 3972 M-HJ 1056')">
-                        <input type="radio" name="respuesta" class="option-radio" value="617479 B-C 3972 M-HJ 1056">
+                    <div class="option" onclick="selectOption(this, 'b')">
+                        <input type="radio" name="respuesta" class="option-radio" value="b">
                         <div class="option-text">
-                            617479 B-C 3972 M-HJ 1056
+                            617479 B
                         </div>
                     </div>
                     
-                    <div class="option" onclick="selectOption(this, 'NCF 2888 V')">
-                        <input type="radio" name="respuesta" class="option-radio" value="NCF 2888 V">
+                    <div class="option" onclick="selectOption(this, 'c')">
+                        <input type="radio" name="respuesta" class="option-radio" value="c">
+                        <div class="option-text">
+                            C 3972 M
+                        </div>
+                    </div>
+                    
+                    <div class="option" onclick="selectOption(this, 'd')">
+                        <input type="radio" name="respuesta" class="option-radio" value="d">
+                        <div class="option-text">
+                            HJ 1056
+                        </div>
+                    </div>
+                    
+                    <div class="option" onclick="selectOption(this, 'e')">
+                        <input type="radio" name="respuesta" class="option-radio" value="e">
                         <div class="option-text">
                             NCF 2888 V
                         </div>
                     </div>
                     
-                    <div class="option" onclick="selectOption(this, '30216')">
-                        <input type="radio" name="respuesta" class="option-radio" value="30216">
+                    <div class="option" onclick="selectOption(this, 'f')">
+                        <input type="radio" name="respuesta" class="option-radio" value="f">
                         <div class="option-text">
                             30216
                         </div>
                     </div>
                     
-                    <div class="option" onclick="selectOption(this, '24048 CC/W33')">
-                        <input type="radio" name="respuesta" class="option-radio" value="24048 CC/W33">
+                    <div class="option" onclick="selectOption(this, 'g')">
+                        <input type="radio" name="respuesta" class="option-radio" value="g">
                         <div class="option-text">
                             24048 CC/W33
                         </div>
@@ -510,7 +524,7 @@
 
     <script>
         let selectedAnswer = null;
-        const correctAnswers = ['32956T170/DB', '617479 B-C 3972 M-HJ 1056'];
+        const correctAnswers = ['a', 'd']; // (a) para lado motor y (d) para lado bomba
 
         function selectOption(element, value) {
             // Remover selección previa
@@ -542,12 +556,16 @@
             let isCorrect = correctAnswers.includes(selectedAnswer);
             
             if (isCorrect) {
-                resultMessage.innerHTML = '¡Correcto! Has identificado correctamente el código de rodamiento.';
+                if (selectedAnswer === 'a') {
+                    resultMessage.innerHTML = '¡Correcto! La opción (a) 32956T170/DB es correcta para el lado motor.';
+                } else if (selectedAnswer === 'd') {
+                    resultMessage.innerHTML = '¡Correcto! La opción (d) HJ 1056 es correcta para el lado bomba.';
+                }
                 resultMessage.className = 'result-message result-correct';
             } else {
                 resultMessage.innerHTML = `Incorrecto. Las respuestas correctas son:<br>
-                    <strong>Lado Motor:</strong> 32956T170/DB<br>
-                    <strong>Lado Bomba:</strong> 617479 B-C 3972 M-HJ 1056`;
+                    <strong>(a)</strong> 32956T170/DB - Lado Motor<br>
+                    <strong>(d)</strong> HJ 1056 - Lado Bomba`;
                 resultMessage.className = 'result-message result-incorrect';
             }
             
