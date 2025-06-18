@@ -40,6 +40,31 @@
 <body>
   <div id="v3d-container">
     <div id="fullscreen-button" class="fullscreen-button fullscreen-open" title="Toggle fullscreen mode"></div>
+
+    <div id="preloader_screen" class="pantalla-completa">
+
+      <div id="skill" class="skill">
+        <div class="outer">
+          <div class="inner">
+            <div id="percentage" style="font-family:'Cabin', sans-serif;
+            font-size:20px">0%</div>
+          </div>
+        </div>
+
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px" class="preloader_circle">
+          <defs>
+            <linearGradient id="GradientColor">
+              <stop offset="0%" stop-color="#ffffff" />
+              <stop offset="100%" stop-color="#ffffff" />
+            </linearGradient>
+          </defs>
+          <circle id="circle" cx="80" cy="80" r="70" stroke-linecap="round" />
+        </svg>
+      </div>
+
+
+      <img src="img/logo.png" class="logo">
+    </div>
   </div>
 
   <style>
@@ -405,14 +430,14 @@
         }
     </style>
 <!-- Instruction Box -->
-    <div class="instruction-box">
+    <div id="instruccion" style="display: none;" class="instruction-box">
         <p class="instruction-text">
             Se requiere realizar el pedido de repuestos de los rodamientos de la bomba de alimentación de molinos, para ello se requiere que se identifiquen el tipo y medidas según la siguiente información:
         </p>
     </div>
 
     <!-- Question Button -->
-    <button class="question-btn" onclick="openModal()">?</button>
+    <button id="boton" style="display: none;" class="question-btn" onclick="openModal()">?</button>
 
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal">
@@ -440,7 +465,6 @@
                     <div class="option" onclick="selectOption(this, '32956T170/DB')">
                         <input type="radio" name="respuesta" class="option-radio" value="32956T170/DB">
                         <div class="option-text">
-                            <div class="option-label">Lado Motor:</div>
                             32956T170/DB
                         </div>
                     </div>
@@ -448,7 +472,6 @@
                     <div class="option" onclick="selectOption(this, '617479 B-C 3972 M-HJ 1056')">
                         <input type="radio" name="respuesta" class="option-radio" value="617479 B-C 3972 M-HJ 1056">
                         <div class="option-text">
-                            <div class="option-label">Lado Bomba:</div>
                             617479 B-C 3972 M-HJ 1056
                         </div>
                     </div>

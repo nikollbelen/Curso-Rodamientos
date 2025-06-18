@@ -1,1 +1,216 @@
-<xml xmlns="http://www.w3.org/1999/xhtml"></xml>
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <tab name="Init" type="InitTab" active="false" scrollx="-181.21477508544922" scrolly="8.01911926269537" scale="1">
+    <block xmlns="https://developers.google.com/blockly/xml" type="initSettings" id="bt9,}IkV:Z.vIO}fs*7-" x="330" y="-10">
+      <field name="LOAD_COMP_ASSETS">FALSE</field>
+      <field name="FULLSCREEN">FALSE</field>
+      <field name="BKG_TRANSPARENCY">FALSE</field>
+      <field name="PRESERVE_DRAW_BUF">FALSE</field>
+      <field name="FADE_ANNOTATIONS">TRUE</field>
+    </block>
+    <block xmlns="https://developers.google.com/blockly/xml" type="initPreloader" id="GlpEpb}0?|?ng4N`ZQ-P" x="330" y="170">
+      <statement name="DO_PROGRESS">
+        <block type="setHTMLElemAttribute" id="oP|Y4CK7gGkuHuXrXOU`" inline="false">
+          <field name="ATTRIBUTE">innerHTML</field>
+          <field name="PARENT">FALSE</field>
+          <value name="VALUE">
+            <block type="text_join" id="rMBHEncDnJvL/fho(ucN">
+              <mutation items="2"></mutation>
+              <value name="ADD0">
+                <block type="percentage" id="DSrbCG1g,gfa.@c[I1g{"></block>
+              </value>
+              <value name="ADD1">
+                <block type="text" id="2;Z}zaFtk~yWhXPD+^WA">
+                  <field name="TEXT">%</field>
+                </block>
+              </value>
+            </block>
+          </value>
+          <value name="ID">
+            <shadow type="text" id="qM-{{CwS^LddRZ~;_/M|">
+              <field name="TEXT"></field>
+            </shadow>
+            <block type="text" id="]DFdIsI9ofD~K#hG{LUD">
+              <field name="TEXT">percentage</field>
+            </block>
+          </value>
+          <next>
+            <block type="setHTMLElemAttribute" id=",,{_U3o)C!_vkv8}rjQc" inline="false">
+              <field name="ATTRIBUTE">style</field>
+              <field name="PARENT">FALSE</field>
+              <value name="VALUE">
+                <block type="text_join" id="]{~4zm_LXMivj%:HwM?:">
+                  <mutation items="3"></mutation>
+                  <value name="ADD0">
+                    <block type="text" id="61Wh8|s2G^v+e#n9CpM=">
+                      <field name="TEXT">stroke-dashoffset: </field>
+                    </block>
+                  </value>
+                  <value name="ADD1">
+                    <block type="math_arithmetic" id="0Jeh@F8SRq|T9;1B%T)!">
+                      <field name="OP">MINUS</field>
+                      <value name="A">
+                        <shadow type="math_number" id=".2[mHfAt8k^h`XR}yh+?">
+                          <field name="NUM">472</field>
+                        </shadow>
+                      </value>
+                      <value name="B">
+                        <shadow type="math_number" id="rqpkl$7~Sxi0knJO{cb!">
+                          <field name="NUM">2</field>
+                        </shadow>
+                        <block type="math_arithmetic" id="W:~%y$+yR=YYCvp%KZs1">
+                          <field name="OP">DIVIDE</field>
+                          <value name="A">
+                            <shadow type="math_number" id="[j+H#*nRHO.%ySK8~#|S">
+                              <field name="NUM">475</field>
+                            </shadow>
+                            <block type="math_arithmetic" id="k?qp-_QU~mNaHX50Z4fm">
+                              <field name="OP">MULTIPLY</field>
+                              <value name="A">
+                                <shadow type="math_number" id="ixV/z!Q_G(ebNcndGjvX">
+                                  <field name="NUM">472</field>
+                                </shadow>
+                              </value>
+                              <value name="B">
+                                <shadow type="math_number" id="5(AgQ5c1+NSH,x+.W9)X">
+                                  <field name="NUM">2</field>
+                                </shadow>
+                                <block type="percentage" id="?T=!|qshxLF15!SEw~In"></block>
+                              </value>
+                            </block>
+                          </value>
+                          <value name="B">
+                            <shadow type="math_number" id="LSJE$P}$=|PL7Tiby|Xs">
+                              <field name="NUM">100</field>
+                            </shadow>
+                          </value>
+                        </block>
+                      </value>
+                    </block>
+                  </value>
+                  <value name="ADD2">
+                    <block type="text" id="@bLs*O^IT?S+==}B%p:d">
+                      <field name="TEXT">;</field>
+                    </block>
+                  </value>
+                </block>
+              </value>
+              <value name="ID">
+                <shadow type="text" id="3:9OBRu(h$qO#=p{MO-R">
+                  <field name="TEXT"></field>
+                </shadow>
+                <block type="text" id="`vNQISAYFmeQHG6o42x?">
+                  <field name="TEXT">circle</field>
+                </block>
+              </value>
+            </block>
+          </next>
+        </block>
+      </statement>
+      <statement name="DO_END">
+        <block type="setHTMLElemStyle" id="|f|[S_0{5exACZCn1]5M">
+          <field name="PROPERTY">display</field>
+          <field name="PARENT">TRUE</field>
+          <value name="VALUE">
+            <shadow type="displayDropdown" id="0SAPQ{:2|7xq:BRo=5e8">
+              <field name="TEXT">block</field>
+            </shadow>
+          </value>
+          <value name="ID">
+            <shadow type="text" id="drwY-.tk7//#~H!TFr@N">
+              <field name="TEXT">instruccion</field>
+            </shadow>
+          </value>
+          <next>
+            <block type="setHTMLElemStyle" id="vvN~K2,3~XYDzsPGME`@">
+              <field name="PROPERTY">display</field>
+              <field name="PARENT">TRUE</field>
+              <value name="VALUE">
+                <shadow type="displayDropdown" id="Wfg[-VyFTMGc)!*kT]]Q">
+                  <field name="TEXT">block</field>
+                </shadow>
+              </value>
+              <value name="ID">
+                <shadow type="text" id="O(/xmwc7YtiUsYwF`f|z">
+                  <field name="TEXT">boton</field>
+                </shadow>
+              </value>
+              <next>
+                <block type="setHTMLElemStyle" id="8Pub1F~6-3vD9Ov1CfJj">
+                  <field name="PROPERTY">display</field>
+                  <field name="PARENT">FALSE</field>
+                  <value name="VALUE">
+                    <block type="text" id="{;+b!@{307Rau#Fq%frI">
+                      <field name="TEXT">none</field>
+                    </block>
+                  </value>
+                  <value name="ID">
+                    <shadow type="text" id="+EY){anZuSO1ZT$os(XW">
+                      <field name="TEXT"></field>
+                    </shadow>
+                    <block type="text" id="+k:!rk4Gt-(]{Wp^z=)o">
+                      <field name="TEXT">skill</field>
+                    </block>
+                  </value>
+                  <next>
+                    <block type="setHTMLElemStyle" id="8/{A~[O3@S]q8#zm:zRF">
+                      <field name="PROPERTY">display</field>
+                      <field name="PARENT">FALSE</field>
+                      <value name="VALUE">
+                        <block type="text" id=":JDk{13Bj1pPx6(-`/eK">
+                          <field name="TEXT">none</field>
+                        </block>
+                      </value>
+                      <value name="ID">
+                        <shadow type="text" id="+EY){anZuSO1ZT$os(XW">
+                          <field name="TEXT"></field>
+                        </shadow>
+                        <block type="text" id="8^2B@0VUZ7TIDP3,(WT~">
+                          <field name="TEXT">preloader_screen</field>
+                        </block>
+                      </value>
+                      <next>
+                        <block type="setHTMLElemStyle" id="]S/;jyPwc0B0Dm~ffU9@">
+                          <field name="PROPERTY">display</field>
+                          <field name="PARENT">FALSE</field>
+                          <value name="VALUE">
+                            <block type="text" id="nLreDq78/)#]u5@rWLAk">
+                              <field name="TEXT">flex</field>
+                            </block>
+                          </value>
+                          <value name="ID">
+                            <shadow type="text" id="rB=m)c0+s?.kea1@{MA2">
+                              <field name="TEXT"></field>
+                            </shadow>
+                            <block type="text" id="l2dp-sC=LP4bKfN8z+/@">
+                              <field name="TEXT">boton_inicio</field>
+                            </block>
+                          </value>
+                        </block>
+                      </next>
+                    </block>
+                  </next>
+                </block>
+              </next>
+            </block>
+          </next>
+        </block>
+      </statement>
+    </block>
+  </tab>
+  <tab name="New Tab" type="CommonTab" active="true" scrollx="13.000000000000227" scrolly="1.1368683772161603e-13" scale="0.9">
+    <block xmlns="https://developers.google.com/blockly/xml" type="playSound" id="YgdF,aXOEk==n2uz)@[B" x="270" y="270">
+      <field name="LOOP">FALSE</field>
+      <value name="VALUE">
+        <block type="loadSoundAdv" id="P/zq@~jyQbYHy)fG!e}9">
+          <field name="TYPE">MUSIC</field>
+          <value name="URL">
+            <shadow type="text" id="w-Xax;grL1%[SFT{iONB">
+              <field name="TEXT">audio\audio.mp3</field>
+            </shadow>
+          </value>
+        </block>
+      </value>
+    </block>
+  </tab>
+  <editorsettings viewport-x="1109.4" viewport-y="37" viewport-w="751.6" viewport-h="462" viewport-hidden="true" toolbox-library-mode="false" toolbox-minimized-mode="false"></editorsettings>
+</xml>
