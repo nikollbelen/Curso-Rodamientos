@@ -2,72 +2,78 @@
 <!-- __V3D_PUZZLES__ - enable Puzzles button in the App Manager -->
 <!-- __V3D_TEMPLATE__ - template-based file; delete this line to prevent this file from being updated -->
 <html lang="en">
+
 <head>
-  <title>Curso Rodamientos</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <title>Curso Rodamientos</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 
-  <!-- Search Engines -->
-  <meta name="description" content="Interactive 3D Web application made with Verge3D. Immerse yourself in amazing graphics experience offered by state-of-the art WebGL and HTML5 technologies.">
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Verge3D Web Interactive">
-  <meta name="twitter:description" content="Interactive 3D Web application made with Verge3D. Immerse yourself in amazing graphics experience offered by state-of-the art WebGL and HTML5 technologies.">
-  <meta name="twitter:image:src" content="https://cdn.soft8soft.com/images/player_socials.jpg">
-  <!-- Open Graph -->
-  <meta property="og:title" content="Verge3D Web Interactive">
-  <meta property="og:description" content="Interactive 3D Web application made with Verge3D. Immerse yourself in amazing graphics experience offered by state-of-the art WebGL and HTML5 technologies.">
-  <meta property="og:image" content="https://cdn.soft8soft.com/images/player_socials.jpg">
-  <meta property="og:type" content="website">
+    <!-- Search Engines -->
+    <meta name="description"
+        content="Interactive 3D Web application made with Verge3D. Immerse yourself in amazing graphics experience offered by state-of-the art WebGL and HTML5 technologies.">
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Verge3D Web Interactive">
+    <meta name="twitter:description"
+        content="Interactive 3D Web application made with Verge3D. Immerse yourself in amazing graphics experience offered by state-of-the art WebGL and HTML5 technologies.">
+    <meta name="twitter:image:src" content="https://cdn.soft8soft.com/images/player_socials.jpg">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Verge3D Web Interactive">
+    <meta property="og:description"
+        content="Interactive 3D Web application made with Verge3D. Immerse yourself in amazing graphics experience offered by state-of-the art WebGL and HTML5 technologies.">
+    <meta property="og:image" content="https://cdn.soft8soft.com/images/player_socials.jpg">
+    <meta property="og:type" content="website">
 
-  <meta name="generator" content="Verge3D 4.8.0">
+    <meta name="generator" content="Verge3D 4.8.0">
 
-  <!-- favicons -->
-  <link rel="apple-touch-icon" sizes="180x180" href="media/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="48x48" href="media/favicon-48x48.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="media/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="media/favicon-16x16.png">
-  <link rel="manifest" href="media/manifest.json">
-  <link rel="mask-icon" href="media/safari-pinned-tab.svg" color="#0048a5">
-  <meta name="theme-color" content="#ffffff">
+    <!-- favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="media/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="media/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="media/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="media/favicon-16x16.png">
+    <link rel="manifest" href="media/manifest.json">
+    <link rel="mask-icon" href="media/safari-pinned-tab.svg" color="#0048a5">
+    <meta name="theme-color" content="#ffffff">
 
-  <script src="v3d.js"></script>
-  <script src="Rodamientos.js"></script>
+    <script src="v3d.js"></script>
+    <script src="Rodamientos.js"></script>
 
-  <link rel="stylesheet" type="text/css" href="Rodamientos.css">
+    <link rel="stylesheet" type="text/css" href="Rodamientos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
 <body>
-  <div id="v3d-container">
-    <div id="fullscreen-button" class="fullscreen-button fullscreen-open" title="Toggle fullscreen mode"></div>
+    <div id="v3d-container">
+        <div id="fullscreen-button" class="fullscreen-button fullscreen-open" title="Toggle fullscreen mode"></div>
 
-    <div id="preloader_screen" class="pantalla-completa">
+        <div id="preloader_screen" class="pantalla-completa">
 
-      <div id="skill" class="skill">
-        <div class="outer">
-          <div class="inner">
-            <div id="percentage" style="font-family:'Cabin', sans-serif;
+            <div id="skill" class="skill">
+                <div class="outer">
+                    <div class="inner">
+                        <div id="percentage" style="font-family:'Cabin', sans-serif;
             font-size:20px">0%</div>
-          </div>
+                    </div>
+                </div>
+
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px"
+                    class="preloader_circle">
+                    <defs>
+                        <linearGradient id="GradientColor">
+                            <stop offset="0%" stop-color="#ffffff" />
+                            <stop offset="100%" stop-color="#ffffff" />
+                        </linearGradient>
+                    </defs>
+                    <circle id="circle" cx="80" cy="80" r="70" stroke-linecap="round" />
+                </svg>
+            </div>
+
+
         </div>
-
-        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px" class="preloader_circle">
-          <defs>
-            <linearGradient id="GradientColor">
-              <stop offset="0%" stop-color="#ffffff" />
-              <stop offset="100%" stop-color="#ffffff" />
-            </linearGradient>
-          </defs>
-          <circle id="circle" cx="80" cy="80" r="70" stroke-linecap="round" />
-        </svg>
-      </div>
-
-
-      <img src="img/logo.png" class="logo">
     </div>
-  </div>
 
-  <style>
+    <img src="img/logo.png" class="logo">
+    <style>
         * {
             margin: 0;
             padding: 0;
@@ -80,6 +86,43 @@
             height: 100vh;
             margin: 0;
             padding: 0;
+            overflow: hidden;
+        }
+
+        /* Instruction Box */
+        .instruction-box {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            max-width: 90%;
+            width: 800px;
+            background-color: white;
+            padding: 20px 24px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            border-left: 4px solid #1976d2;
+            z-index: 998;
+            animation: slideDown 0.5s ease-out;
+        }
+
+        .instruction-text {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #424242;
+            margin: 0;
+            text-align: justify;
+        }
+
+        .estilo-anotacion {
+            padding: 0.5em 0.7em;
+            background-color: #1976d2;
+            border: none;
+            color: white;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            animation: pulse 2s infinite;
         }
 
         /* Question Button */
@@ -112,51 +155,16 @@
             transform: translateX(-50%) scale(0.95);
         }
 
-        /* Instruction Box */
-        .instruction-box {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            max-width: 90%;
-            width: 800px;
-            background-color: white;
-            padding: 20px 24px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-            border-left: 4px solid #1976d2;
-            z-index: 998;
-            animation: slideDown 0.5s ease-out;
-        }
-
-        .instruction-text {
-            font-size: 16px;
-            line-height: 1.5;
-            color: #424242;
-            margin: 0;
-            text-align: justify;
-        }
-
-        /* Slide Down Animation */
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateX(-50%) translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(-50%) translateY(0);
-            }
-        }
-
         /* Pulse Animation */
         @keyframes pulse {
             0% {
                 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 0 0 0 rgba(25, 118, 210, 0.7);
             }
+
             70% {
                 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 0 0 20px rgba(25, 118, 210, 0);
             }
+
             100% {
                 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 0 0 0 rgba(25, 118, 210, 0);
             }
@@ -186,14 +194,41 @@
             background: white;
             border-radius: 8px;
             box-shadow: 0 11px 15px -7px rgba(0, 0, 0, 0.2),
-                        0 24px 38px 3px rgba(0, 0, 0, 0.14),
-                        0 9px 46px 8px rgba(0, 0, 0, 0.12);
-            max-width: 800px;
-            width: 90%;
-            max-height: 90vh;
-            overflow-y: auto;
+                0 24px 38px 3px rgba(0, 0, 0, 0.14),
+                0 9px 46px 8px rgba(0, 0, 0, 0.12);
+            max-width: 1000px;
+            width: 95%;
+            max-height: 95vh;
+            overflow: hidden;
             animation: slideIn 0.3s ease-out;
             position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Close Button */
+        .close-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #ffffff;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            z-index: 1001;
+            background-color: red;
+        }
+
+        .close-btn:hover {
+            transform: scale(1.1);
         }
 
         /* Modal Header */
@@ -212,9 +247,14 @@
         /* Modal Body */
         .modal-body {
             padding: 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
         }
 
         .question {
+            padding: 1rem;
             font-size: 18px;
             font-weight: 400;
             color: #212121;
@@ -222,8 +262,69 @@
             line-height: 1.5;
         }
 
+        /* Game Area */
+        .game-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-height: auto;
+        }
+
+        /* Drop Zones */
+        .drop-zones {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .drop-zone {
+            width: 300px;
+            height: 88px;
+            border: 3px dashed #bdbdbd;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #fafafa;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .drop-zone.drag-over {
+            border-color: #1976d2;
+            background-color: #e3f2fd;
+            transform: scale(1.05);
+        }
+
+        .drop-zone.correct {
+            border-color: #4caf50;
+            background-color: #e8f5e8;
+            animation: success 0.6s ease-out;
+        }
+
+        .drop-zone.incorrect {
+            border-color: #f44336;
+            background-color: #ffebee;
+            animation: shake 0.6s ease-out;
+        }
+
+        .drop-zone-label {
+            font-size: 16px;
+            font-weight: 500;
+            color: #757575;
+            margin-bottom: 8px;
+        }
+
+        .drop-zone.filled .drop-zone-label {
+            color: #424242;
+        }
+
         /* Image Container */
         .image-container {
+            position: relative;
+            display: inline-block;
             text-align: center;
             margin-bottom: 24px;
             background-color: #fafafa;
@@ -232,16 +333,70 @@
             border: 1px solid #e0e0e0;
         }
 
+        .normal-size {
+            max-width: 300px;
+            transition: all 0.3s ease;
+        }
+
+        .fullscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh !important;
+            max-width: 100vw !important;
+            max-height: 100vh !important;
+            object-fit: contain;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1005;
+        }
+
+        .zoom-btn {
+
+            position: absolute;
+            bottom: 10px;
+            right: 50%;
+            background: rgba(255, 255, 255, 0.8);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            background-color: blue;
+        }
+
+        .close-btn-imge {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            color: white;
+            background-color: red;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1007;
+        }
+
         .quiz-image {
             max-width: 100%;
             height: auto;
+            max-height: 200px;
             border-radius: 4px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .image-placeholder {
             width: 100%;
-            height: 200px;
+            height: 150px;
             background-color: #e0e0e0;
             border-radius: 4px;
             display: flex;
@@ -251,148 +406,102 @@
             font-size: 14px;
         }
 
-        /* Options Container */
+        /* Options Area */
+        .options-area {
+            padding: 16px;
+            z-index: 1002;
+        }
+
         .options-container {
-            margin-bottom: 24px;
-        }
-
-        .option {
             display: flex;
-            align-items: flex-start;
-            margin-bottom: 12px;
-            padding: 12px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.2s ease;
-            border: 1px solid transparent;
-        }
-
-        .option:hover {
-            background-color: #f5f5f5;
-        }
-
-        .option.selected {
-            background-color: #e3f2fd;
-            border-color: #1976d2;
-        }
-
-        .option-radio {
-            margin-right: 12px;
-            margin-top: 2px;
-        }
-
-        .option-text {
-            flex: 1;
-            color: #424242;
-            font-size: 16px;
-            line-height: 1.4;
-        }
-
-        .option-label {
-            font-weight: 500;
-            color: #1976d2;
-            margin-bottom: 4px;
-        }
-
-        /* Modal Actions */
-        .modal-actions {
-            padding: 8px 24px 24px;
-            display: flex;
-            justify-content: flex-end;
+            justify-content: center;
             gap: 12px;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        /* Buttons */
-        .btn {
-            padding: 10px 24px;
-            border: none;
-            border-radius: 4px;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.02857em;
-        }
-
-        .btn-primary {
+        /* Draggable Options */
+        .option-item {
             background-color: #1976d2;
             color: white;
+            padding: 12px 16px;
+            border-radius: 6px;
+            cursor: grab;
+            user-select: none;
+            transition: all 0.2s ease;
+            font-size: 14px;
+            font-weight: 500;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            min-width: 120px;
+            text-align: center;
         }
 
-        .btn-primary:hover {
+        .option-item:hover {
             background-color: #1565c0;
-            box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2),
-                        0 4px 5px 0 rgba(0, 0, 0, 0.14),
-                        0 1px 10px 0 rgba(0, 0, 0, 0.12);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
 
-        .btn-secondary {
-            background-color: transparent;
-            color: #1976d2;
+        .option-item.dragging {
+            cursor: grabbing;
+            transform: rotate(5deg) scale(1.05);
+            z-index: 1003;
+            opacity: 0.8;
         }
 
-        .btn-secondary:hover {
-            background-color: rgba(25, 118, 210, 0.04);
+        .option-item.used {
+            background-color: #4caf50;
+            cursor: default;
+            transform: none !important;
         }
 
-        .btn:disabled {
-            background-color: #e0e0e0;
-            color: #9e9e9e;
-            cursor: not-allowed;
+        .option-item.returning {
+            animation: returnToPlace 0.5s ease-out;
         }
 
-        /* Close Button */
-        .close-btn {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background: none;
+        /* Reset Button */
+        .reset-btn {
+            margin: auto;
+            position: relative;
+            background-color: #ff9800;
+            color: white;
             border: none;
-            font-size: 28px;
+            padding: 12px 20px;
+            border-radius: 6px;
             cursor: pointer;
-            color: #757575;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            font-size: 14px;
+            font-weight: 500;
             transition: all 0.2s ease;
             z-index: 1001;
         }
 
-        .close-btn:hover {
-            background-color: #f5f5f5;
-            color: #424242;
-            transform: scale(1.1);
-        }
-
-        /* Result Message */
-        .result-message {
-            margin-top: 16px;
-            padding: 12px;
-            border-radius: 4px;
-            font-weight: 500;
-            text-align: center;
-        }
-
-        .result-correct {
-            background-color: #e8f5e8;
-            color: #2e7d32;
-            border: 1px solid #4caf50;
-        }
-
-        .result-incorrect {
-            background-color: #ffebee;
-            color: #c62828;
-            border: 1px solid #f44336;
+        .reset-btn:hover {
+            background-color: #f57c00;
+            transform: scale(1.05);
         }
 
         /* Animations */
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
         @keyframes slideIn {
@@ -400,39 +509,106 @@
                 opacity: 0;
                 transform: translateY(-20px) scale(0.95);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0) scale(1);
             }
         }
 
+        @keyframes success {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes shake {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            10%,
+            30%,
+            50%,
+            70%,
+            90% {
+                transform: translateX(-5px);
+            }
+
+            20%,
+            40%,
+            60%,
+            80% {
+                transform: translateX(5px);
+            }
+        }
+
+        @keyframes returnToPlace {
+            0% {
+                transform: scale(1.2);
+                opacity: 0.7;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
         /* Responsive */
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
             .modal {
-                width: 95%;
-                margin: 20px;
+                width: 98%;
+                max-height: 98vh;
             }
-            
-            .modal-header,
-            .modal-body,
-            .modal-actions {
-                padding-left: 16px;
-                padding-right: 16px;
+
+            .drop-zones {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
             }
-            
-            .question {
-                font-size: 16px;
+
+            .drop-zone {
+                width: 90%;
+                max-width: 300px;
             }
-            
-            .option-text {
+
+            .options-container {
+                gap: 8px;
+            }
+
+            .option-item {
+                min-width: 100px;
+                font-size: 12px;
+                padding: 10px 12px;
+            }
+
+            .instruction-box {
+                max-width: 95%;
+                padding: 16px 20px;
+                top: 10px;
+            }
+
+            .instruction-text {
                 font-size: 14px;
             }
         }
     </style>
-<!-- Instruction Box -->
+    <!-- Instruction Box -->
     <div id="instruccion" style="display: none;" class="instruction-box">
         <p class="instruction-text">
-            Se requiere realizar el pedido de repuestos de los rodamientos de la bomba de alimentación de molinos, para ello se requiere que se identifiquen el tipo y medidas según la siguiente información:
+            Se requiere realizar el pedido de repuestos de los rodamientos de la bomba de alimentación de molinos, para
+            ello se requiere que se identifiquen el tipo y medidas según la siguiente información:
         </p>
     </div>
 
@@ -442,195 +618,228 @@
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal">
             <button class="close-btn" onclick="closeModal()">&times;</button>
-            
-            <div class="modal-header">
-                <h2 class="modal-title">Identificación de Códigos de Rodamiento</h2>
-            </div>
-            
+
             <div class="modal-body">
                 <div class="question">
-                    Identifique el código de rodamiento del lado motor y lado bomba, considerando que el eje tiene una medida de 280 mm.
+                    Arrastra el código de rodamiento del lado motor y lado bomba, considerando que el eje tiene una
+                    medida de 280 mm.
                 </div>
-                
+
                 <div class="image-container">
-                    <img src="img/rodamiento.jpg" alt="Diagrama de rodamientos" class="quiz-image" 
-                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <img src="img/rodamiento.jpg" id="rodamientoImg" alt="Diagrama de rodamientos" class="quiz-image"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <button class="zoom-btn" onclick="expandImage()">
+                        <i class="fas fa-search"></i>
+                    </button>
                     <div class="image-placeholder" style="display: none;">
                         Imagen no disponible<br>
                         <small>Coloque su imagen en: img/rodamiento.jpg</small>
                     </div>
+                    <button class="close-btn-imge" onclick="revertImage()">
+                        <i class="fas fa-times"></i>
+                    </button>
                 </div>
-                
-                <div class="options-container">
-                    <div class="option" onclick="selectOption(this, 'a')">
-                        <input type="radio" name="respuesta" class="option-radio" value="a">
-                        <div class="option-text">
+                <script>
+                    function expandImage() {
+                        const img = document.getElementById('rodamientoImg');
+                        const closeBtn = document.querySelector('.close-btn-imge');
+                        const zoomBtn = document.querySelector('.zoom-btn');
+
+                        img.classList.add('fullscreen');
+                        img.classList.remove('normal-size');
+                        closeBtn.style.display = 'flex';
+                        zoomBtn.style.display = 'none';
+                    }
+
+                    function revertImage() {
+                        const img = document.getElementById('rodamientoImg');
+                        const closeBtn = document.querySelector('.close-btn-imge');
+                        const zoomBtn = document.querySelector('.zoom-btn');
+
+                        img.classList.remove('fullscreen');
+                        img.classList.add('normal-size');
+                        closeBtn.style.display = 'none';
+                        zoomBtn.style.display = 'flex';
+                    }
+                </script>
+
+                <div class="game-area">
+                    <div class="drop-zones">
+                        <div class="drop-zone" data-answer="a" ondrop="drop(event)" ondragover="allowDrop(event)"
+                            ondragleave="dragLeave(event)">
+                            <div class="drop-zone-label">Lado Motor</div>
+                            <div class="drop-zone-content"></div>
+                        </div>
+
+                        <div class="drop-zone" data-answer="d" ondrop="drop(event)" ondragover="allowDrop(event)"
+                            ondragleave="dragLeave(event)">
+                            <div class="drop-zone-label">Lado Bomba</div>
+                            <div class="drop-zone-content"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Options Area (Fixed at bottom) -->
+                <div class="options-area" id="optionsArea" style="display: none;">
+                    <div class="options-container">
+                        <div class="option-item" draggable="true" data-value="a" ondragstart="dragStart(event)">
                             32956T170/DB
                         </div>
-                    </div>
-                    
-                    <div class="option" onclick="selectOption(this, 'b')">
-                        <input type="radio" name="respuesta" class="option-radio" value="b">
-                        <div class="option-text">
+                        <div class="option-item" draggable="true" data-value="b" ondragstart="dragStart(event)">
                             617479 B
                         </div>
-                    </div>
-                    
-                    <div class="option" onclick="selectOption(this, 'c')">
-                        <input type="radio" name="respuesta" class="option-radio" value="c">
-                        <div class="option-text">
+                        <div class="option-item" draggable="true" data-value="c" ondragstart="dragStart(event)">
                             C 3972 M
                         </div>
-                    </div>
-                    
-                    <div class="option" onclick="selectOption(this, 'd')">
-                        <input type="radio" name="respuesta" class="option-radio" value="d">
-                        <div class="option-text">
+                        <div class="option-item" draggable="true" data-value="d" ondragstart="dragStart(event)">
                             HJ 1056
                         </div>
-                    </div>
-                    
-                    <div class="option" onclick="selectOption(this, 'e')">
-                        <input type="radio" name="respuesta" class="option-radio" value="e">
-                        <div class="option-text">
+                        <div class="option-item" draggable="true" data-value="e" ondragstart="dragStart(event)">
                             NCF 2888 V
                         </div>
-                    </div>
-                    
-                    <div class="option" onclick="selectOption(this, 'f')">
-                        <input type="radio" name="respuesta" class="option-radio" value="f">
-                        <div class="option-text">
+                        <div class="option-item" draggable="true" data-value="f" ondragstart="dragStart(event)">
                             30216
                         </div>
-                    </div>
-                    
-                    <div class="option" onclick="selectOption(this, 'g')">
-                        <input type="radio" name="respuesta" class="option-radio" value="g">
-                        <div class="option-text">
+                        <div class="option-item" draggable="true" data-value="g" ondragstart="dragStart(event)">
                             24048 CC/W33
                         </div>
                     </div>
                 </div>
-                
-                <div id="resultMessage" class="result-message" style="display: none;"></div>
+                <button class="reset-btn" onclick="resetGame()">Reiniciar</button>
             </div>
-            
-            <div class="modal-actions">
-                <button class="btn btn-secondary" onclick="resetQuiz()">Reiniciar</button>
-                <button class="btn btn-primary" onclick="checkAnswer()" id="submitBtn" disabled>Verificar Respuesta</button>
-            </div>
+
         </div>
     </div>
 
+
     <script>
-        let selectedAnswer = null;
-        const correctAnswers = ['a', 'd']; // (a) para lado motor y (d) para lado bomba
-
-        function selectOption(element, value) {
-            // Remover selección previa
-            document.querySelectorAll('.option').forEach(opt => {
-                opt.classList.remove('selected');
-                opt.querySelector('input').checked = false;
-            });
-            
-            // Seleccionar nueva opción
-            element.classList.add('selected');
-            element.querySelector('input').checked = true;
-            selectedAnswer = value;
-            
-            // Habilitar botón de envío
-            document.getElementById('submitBtn').disabled = false;
-            
-            // Ocultar mensaje de resultado
-            document.getElementById('resultMessage').style.display = 'none';
-        }
-
-        function checkAnswer() {
-            const resultMessage = document.getElementById('resultMessage');
-            
-            if (!selectedAnswer) {
-                alert('Por favor seleccione una respuesta');
-                return;
-            }
-            
-            let isCorrect = correctAnswers.includes(selectedAnswer);
-            
-            if (isCorrect) {
-                if (selectedAnswer === 'a') {
-                    resultMessage.innerHTML = '¡Correcto! La opción (a) 32956T170/DB es correcta para el lado motor.';
-                } else if (selectedAnswer === 'd') {
-                    resultMessage.innerHTML = '¡Correcto! La opción (d) HJ 1056 es correcta para el lado bomba.';
-                }
-                resultMessage.className = 'result-message result-correct';
-            } else {
-                resultMessage.innerHTML = `Incorrecto. Las respuestas correctas son:<br>
-                    <strong>(a)</strong> 32956T170/DB - Lado Motor<br>
-                    <strong>(d)</strong> HJ 1056 - Lado Bomba`;
-                resultMessage.className = 'result-message result-incorrect';
-            }
-            
-            resultMessage.style.display = 'block';
-            
-            // Deshabilitar botón después de responder
-            document.getElementById('submitBtn').disabled = true;
-        }
-
-        function resetQuiz() {
-            // Limpiar selecciones
-            document.querySelectorAll('.option').forEach(opt => {
-                opt.classList.remove('selected');
-                opt.querySelector('input').checked = false;
-            });
-            
-            selectedAnswer = null;
-            document.getElementById('submitBtn').disabled = true;
-            document.getElementById('resultMessage').style.display = 'none';
-        }
+        let draggedElement = null;
+        let correctAnswers = { 'a': 'motor', 'd': 'bomba' };
+        let gameCompleted = false;
 
         function openModal() {
             document.getElementById('modalOverlay').classList.add('active');
+            document.getElementById('optionsArea').style.display = 'block';
         }
 
         function closeModal() {
             const overlay = document.getElementById('modalOverlay');
-            
-            // Agregar animación de salida
+            const optionsArea = document.getElementById('optionsArea');
+
             overlay.style.animation = 'fadeOut 0.3s ease-out';
-            
+
             setTimeout(() => {
                 overlay.classList.remove('active');
+                optionsArea.style.display = 'none';
                 overlay.style.animation = 'fadeIn 0.3s ease-out';
+                resetGame();
             }, 300);
         }
 
+        function dragStart(event) {
+            draggedElement = event.target;
+            event.target.classList.add('dragging');
+            event.dataTransfer.effectAllowed = 'move';
+            event.dataTransfer.setData('text/html', event.target.outerHTML);
+        }
+
+        function allowDrop(event) {
+            event.preventDefault();
+            if (!event.target.classList.contains('filled') && !draggedElement.classList.contains('used')) {
+                event.target.closest('.drop-zone').classList.add('drag-over');
+            }
+        }
+
+        function dragLeave(event) {
+            event.target.closest('.drop-zone').classList.remove('drag-over');
+        }
+
+        function drop(event) {
+            event.preventDefault();
+            const dropZone = event.target.closest('.drop-zone');
+            dropZone.classList.remove('drag-over');
+
+            if (dropZone.classList.contains('filled') || draggedElement.classList.contains('used')) {
+                return;
+            }
+
+            const draggedValue = draggedElement.dataset.value;
+            const expectedAnswer = dropZone.dataset.answer;
+
+            if (draggedValue === expectedAnswer) {
+                // Respuesta correcta
+                dropZone.classList.add('correct', 'filled');
+                dropZone.querySelector('.drop-zone-content').innerHTML = draggedElement.innerHTML;
+                draggedElement.classList.add('used');
+
+                // setTimeout(() => {
+                //     dropZone.classList.remove('correct');
+                //     checkCompletion();
+                // }, 1000);
+
+            } else {
+                // Respuesta incorrecta
+                dropZone.classList.add('incorrect');
+                draggedElement.classList.add('returning');
+
+                setTimeout(() => {
+                    dropZone.classList.remove('incorrect');
+                    draggedElement.classList.remove('returning');
+                }, 600);
+            }
+
+            draggedElement.classList.remove('dragging');
+            draggedElement = null;
+        }
+
+        function checkCompletion() {
+            const filledZones = document.querySelectorAll('.drop-zone.filled').length;
+            if (filledZones === 2) {
+                gameCompleted = true;
+                setTimeout(() => {
+                    alert('¡Felicitaciones! Has completado correctamente la identificación de rodamientos.\n\nRespuestas correctas:\n- Lado Motor: (a) 32956T170/DB\n- Lado Bomba: (d) HJ 1056');
+                }, 500);
+            }
+        }
+
+        function resetGame() {
+            // Limpiar zonas de drop
+            document.querySelectorAll('.drop-zone').forEach(zone => {
+                zone.classList.remove('filled', 'correct', 'incorrect', 'drag-over');
+                zone.querySelector('.drop-zone-content').innerHTML = '';
+            });
+
+            // Resetear opciones
+            document.querySelectorAll('.option-item').forEach(item => {
+                item.classList.remove('used', 'dragging', 'returning');
+            });
+
+            gameCompleted = false;
+        }
+
         // Cerrar modal al hacer clic fuera de él
-        document.getElementById('modalOverlay').addEventListener('click', function(e) {
+        document.getElementById('modalOverlay').addEventListener('click', function (e) {
             if (e.target === this) {
                 closeModal();
             }
         });
 
         // Cerrar modal con tecla ESC
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape') {
                 closeModal();
             }
         });
 
-        // Animaciones de salida
+        // Prevenir arrastrar elementos no deseados
+        document.addEventListener('dragstart', function (e) {
+            if (!e.target.classList.contains('option-item')) {
+                e.preventDefault();
+            }
+        });
+
+        // Animación de salida
         const style = document.createElement('style');
         style.textContent = `
-            @keyframes slideOut {
-                from {
-                    opacity: 1;
-                    transform: translateY(0) scale(1);
-                }
-                to {
-                    opacity: 0;
-                    transform: translateY(-20px) scale(0.95);
-                }
-            }
-            
             @keyframes fadeOut {
                 from { opacity: 1; }
                 to { opacity: 0; }
