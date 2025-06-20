@@ -8879,4 +8879,220 @@
     </block>
   </statement>
 </block>
+        </category><category name="fds">
+        <block inline="false" type="whenHovered" xmlns="https://developers.google.com/blockly/xml">
+  <mutation adveventoptions="false" xmlns="http://www.w3.org/1999/xhtml"/>
+  <field name="X_RAY">FALSE</field>
+  <value name="VALUE">
+    <shadow type="objectList">
+      <field name="FIELDNAME">&lt;none&gt;</field>
+    </shadow>
+    <block type="lists_create_with">
+      <mutation items="2"/>
+      <value name="ADD0">
+        <block type="objectList">
+          <field name="FIELDNAME">Rodamiento_axial_de_rodillo</field>
+        </block>
+      </value>
+      <value name="ADD1">
+        <block type="objectList">
+          <field name="FIELDNAME">rodamiento_de_rodillo_a_rotula_b</field>
+        </block>
+      </value>
+    </block>
+  </value>
+  <statement name="DO_OVER">
+    <block type="setHTMLElemStyle">
+      <field name="PROPERTY">cursor</field>
+      <field name="PARENT">FALSE</field>
+      <value name="VALUE">
+        <shadow type="cursorDropdown">
+          <field name="TEXT">pointer</field>
+        </shadow>
+      </value>
+      <value name="ID">
+        <shadow type="text">
+          <field name="TEXT">myElem</field>
+        </shadow>
+        <block type="DOMObjectSelector">
+          <field name="DOM_OBJECT">BODY</field>
+        </block>
+      </value>
+    </block>
+  </statement>
+  <statement name="DO_OUT">
+    <block type="setHTMLElemStyle">
+      <field name="PROPERTY">cursor</field>
+      <field name="PARENT">FALSE</field>
+      <value name="VALUE">
+        <shadow type="cursorDropdown">
+          <field name="TEXT">default</field>
+        </shadow>
+      </value>
+      <value name="ID">
+        <shadow type="text">
+          <field name="TEXT">myElem</field>
+        </shadow>
+        <block type="DOMObjectSelector">
+          <field name="DOM_OBJECT">BODY</field>
+        </block>
+      </value>
+    </block>
+  </statement>
+  <next>
+    <block inline="false" type="whenClicked">
+      <mutation adveventoptions="false" enableifmissed="false" xmlns="http://www.w3.org/1999/xhtml"/>
+      <field name="X_RAY">FALSE</field>
+      <field name="DOUBLE_CLICK">FALSE</field>
+      <field name="LEFT_BUTTON">TRUE</field>
+      <field name="MIDDLE_BUTTON">TRUE</field>
+      <field name="RIGHT_BUTTON">TRUE</field>
+      <value name="VALUE">
+        <shadow type="objectList">
+          <field name="FIELDNAME">&lt;none&gt;</field>
+        </shadow>
+        <block type="lists_create_with">
+          <mutation items="2"/>
+          <value name="ADD0">
+            <block type="objectList">
+              <field name="FIELDNAME">Rodamiento_axial_de_rodillo</field>
+            </block>
+          </value>
+          <value name="ADD1">
+            <block type="objectList">
+              <field name="FIELDNAME">rodamiento_de_rodillo_a_rotula_b</field>
+            </block>
+          </value>
+        </block>
+      </value>
+      <statement name="DO">
+        <block type="setHTMLElemStyle">
+          <field name="PROPERTY">display</field>
+          <field name="PARENT">FALSE</field>
+          <value name="VALUE">
+            <shadow type="displayDropdown">
+              <field name="TEXT">inline-flex</field>
+            </shadow>
+          </value>
+          <value name="ID">
+            <shadow type="text">
+              <field name="TEXT">start-button</field>
+            </shadow>
+          </value>
+          <next>
+            <block type="setHTMLElemStyle">
+              <field name="PROPERTY">display</field>
+              <field name="PARENT">FALSE</field>
+              <value name="VALUE">
+                <shadow type="displayDropdown">
+                  <field name="TEXT">none</field>
+                </shadow>
+              </value>
+              <value name="ID">
+                <shadow type="text">
+                  <field name="TEXT">instruccion</field>
+                </shadow>
+              </value>
+              <next>
+                <block type="setHTMLElemStyle">
+                  <field name="PROPERTY">display</field>
+                  <field name="PARENT">FALSE</field>
+                  <value name="VALUE">
+                    <shadow type="displayDropdown">
+                      <field name="TEXT">none</field>
+                    </shadow>
+                  </value>
+                  <value name="ID">
+                    <shadow type="text">
+                      <field name="TEXT">wrapper_audio</field>
+                    </shadow>
+                  </value>
+                  <next>
+                    <block type="execScript">
+                      <value name="TEXT">
+                        <shadow type="textMultiline">
+                          <field name="HIGHLIGHT_MODE">javascript</field>
+                          <field editor-height="10" editor-width="520" name="TEXT">document.getElementById('modalOverlay').classList.add('active');&amp;#10;            document.getElementById('optionsArea').style.display = 'block';</field>
+                        </shadow>
+                      </value>
+                      <next>
+                        <block type="setTimeout">
+                          <value name="VALUE">
+                            <shadow type="math_number">
+                              <field name="NUM">1</field>
+                            </shadow>
+                          </value>
+                          <statement name="DO">
+                            <block type="setHTMLElemStyle">
+                              <field name="PROPERTY">display</field>
+                              <field name="PARENT">FALSE</field>
+                              <value name="VALUE">
+                                <shadow type="displayDropdown">
+                                  <field name="TEXT">flex</field>
+                                </shadow>
+                              </value>
+                              <value name="ID">
+                                <shadow type="text">
+                                  <field name="TEXT">wrapper_audio</field>
+                                </shadow>
+                              </value>
+                              <next>
+                                <block type="execScript">
+                                  <value name="TEXT">
+                                    <shadow type="textMultiline">
+                                      <field name="HIGHLIGHT_MODE">javascript</field>
+                                      <field editor-height="5" editor-width="570" name="TEXT">audioPlayer.src = 'audio/audio3.mp3'; // Cambia la ruta por la que necesites&amp;#10;audioPlayer.play();&amp;#10;</field>
+                                    </shadow>
+                                  </value>
+                                </block>
+                              </next>
+                            </block>
+                          </statement>
+                        </block>
+                      </next>
+                    </block>
+                  </next>
+                </block>
+              </next>
+            </block>
+          </next>
+        </block>
+      </statement>
+    </block>
+  </next>
+</block>
+        </category><category name="jhg">
+        <block type="setHTMLElemAttribute" xmlns="https://developers.google.com/blockly/xml">
+  <field name="ATTRIBUTE">className</field>
+  <field name="PARENT">FALSE</field>
+  <value name="VALUE">
+    <shadow type="text">
+      <field name="TEXT">myClass</field>
+    </shadow>
+    <block type="text_join">
+      <mutation items="2"/>
+      <value name="ADD0">
+        <block type="getHTMLElemAttribute">
+          <field name="ATTRIBUTE">className</field>
+          <field name="PARENT">FALSE</field>
+          <value name="ID">
+            <shadow type="text">
+              <field name="TEXT">poi1</field>
+            </shadow>
+          </value>
+        </block>
+      </value>
+      <value name="ADD1">
+        <block type="text">
+          <field name="TEXT"> estilo-anotacion</field>
+        </block>
+      </value>
+    </block>
+  </value>
+  <value name="ID">
+    <shadow type="text">
+      <field name="TEXT">poi1</field>
+    </shadow>
+  </value>
+</block>
         </category></xml>
