@@ -40,6 +40,7 @@
 
     <link rel="stylesheet" type="text/css" href="Rodamientos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
 
 <body>
@@ -82,7 +83,7 @@
 
         body {
             font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background-color: #f5f5f5;
+            background-color: #fff;
             height: 100vh;
             margin: 0;
             padding: 0;
@@ -91,19 +92,23 @@
 
         /* Instruction Box */
         .instruction-box {
-            position: fixed;
             top: 20px;
             left: 50%;
             transform: translateX(-50%);
             max-width: 90%;
             width: 800px;
-            background-color: white;
-            padding: 20px 24px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
             border-left: 4px solid #1976d2;
             z-index: 998;
             animation: slideDown 0.5s ease-out;
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(226, 232, 240, 0.5);
         }
 
         .instruction-text {
@@ -116,13 +121,30 @@
 
         .estilo-anotacion {
             padding: 0.5em 0.7em;
-            background-color: #1976d2;
-            border: none;
-            color: white;
+            border-radius: 50px;
+            border: 1px solid #031795;
+            background: #f8fafc;
+            color: #031795;
             font-size: 1.1rem;
+            font-family: 'Smart Sans', inherit;
+            font-weight: 600;
             cursor: pointer;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            animation: pulse 2s infinite;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.2s ease;
+            box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08);
+            outline: none;
+        }
+
+        .estilo-anotacion:hover {
+            background: #031794;
+            color: #fff;
+            border-color: #6B8BDE;
+            transform: translateY(-1px) scale(1.07);
+            box-shadow: 0 8px 20px rgba(29, 78, 216, 0.18);
+        }
+
+        .estilo-anotacion:active {
+            transform: translateY(0) scale(1.03);
+            box-shadow: 0 4px 15px rgba(30, 64, 175, 0.13), 0 2px 8px rgba(0, 0, 0, 0.08);
         }
 
         /* Question Button */
@@ -191,19 +213,22 @@
 
         /* Modal Container */
         .modal {
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 11px 15px -7px rgba(0, 0, 0, 0.2),
-                0 24px 38px 3px rgba(0, 0, 0, 0.14),
-                0 9px 46px 8px rgba(0, 0, 0, 0.12);
-            max-width: 1000px;
+            max-width: 1100px;
             width: 95%;
             max-height: 95vh;
             overflow: hidden;
-            animation: slideIn 0.3s ease-out;
             position: relative;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: rgba(0, 0, 0, 0.1);
+            transition: 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            cursor: pointer;
             display: flex;
             flex-direction: column;
+            animation: appear 5s linear;
+            animation-timeline: view();
+            animation-range: entry 0% cover 40%;
         }
 
         /* Close Button */
@@ -215,7 +240,7 @@
             border: none;
             font-size: 28px;
             cursor: pointer;
-            color: #ffffff;
+            color: #031794;
             width: 36px;
             height: 36px;
             border-radius: 50%;
@@ -224,7 +249,9 @@
             justify-content: center;
             transition: all 0.2s ease;
             z-index: 1001;
-            background-color: red;
+            border: 1px solid #6B8BDE;
+            background: #E5EFF9;
+            box-shadow: 0px 4px 19.2px 2px rgba(107, 139, 222, 0.40);
         }
 
         .close-btn:hover {
@@ -279,8 +306,8 @@
         }
 
         .drop-zone {
-            width: 300px;
-            height: 88px;
+            width: 141px;
+            height: 59px;
             border: 3px dashed #bdbdbd;
             border-radius: 8px;
             display: flex;
@@ -352,27 +379,42 @@
         }
 
         .zoom-btn {
-
             position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
             bottom: 10px;
-            right: 50%;
-            background: rgba(255, 255, 255, 0.8);
-            border: none;
+            border: 1px solid #6B8BDE;
+            background: #E5EFF9;
+            box-shadow: 0px 4px 19.2px 2px rgba(107, 139, 222, 0.40);
             border-radius: 50%;
-            width: 40px;
-            height: 40px;
+            width: 44px;
+            height: 44px;
+            min-width: 44px !important;
+            min-height: 44px;
+            max-width: 44px;
+            max-height: 44px;
+            padding: 0 !important;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            background-color: blue;
+            color: #031794;
+            z-index: 2;
+            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+        }
+
+        .zoom-btn:hover {
+            transform: translateX(-50%) translateY(0) scale(1) !important;
+            background: #031794;
+            color: #fff;
+            border-color: #6B8BDE;
+            /* No transform ni box-shadow extra para evitar movimiento */
         }
 
         .close-btn-imge {
-            position: fixed;
-            top: 20px;
-            right: 20px;
+            position: absolute;
+            top: 10px;
+            right: 10px;
             color: white;
             background-color: red;
             border: none;
@@ -383,7 +425,7 @@
             display: none;
             align-items: center;
             justify-content: center;
-            z-index: 1007;
+            z-index: 1005;
         }
 
         .quiz-image {
@@ -391,7 +433,6 @@
             height: auto;
             max-height: 200px;
             border-radius: 4px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .image-placeholder {
@@ -464,11 +505,13 @@
         .reset-btn {
             margin: auto;
             position: relative;
-            background-color: #ff9800;
-            color: white;
+            border-radius: 50px;
+            border: 1px solid #6B8BDE;
+            background: #E5EFF9;
+            box-shadow: 0px 4px 19.2px 2px rgba(107, 139, 222, 0.40);
+            color: #031794;
             border: none;
-            padding: 12px 20px;
-            border-radius: 6px;
+            padding: 12px 43px;
             cursor: pointer;
             font-size: 14px;
             font-weight: 500;
@@ -477,9 +520,561 @@
         }
 
         .reset-btn:hover {
-            background-color: #f57c00;
+            color: white;
+            border-radius: 50px;
+            border: 1px solid #6B8BDE;
+            background: #031794;
+            box-shadow: 0px 4px 19.2px 2px rgba(107, 139, 222, 0.40);
             transform: scale(1.05);
         }
+
+        /* --- ESTILOS UNIFICADOS PARA TODOS LOS BOTONES (IGUAL A .start-button) --- */
+        .option-btn,
+        .nav-btn,
+        .pulse-button,
+        .side-button,
+        .submit-btn,
+        .clear-btn,
+        .close-btn,
+        .close-btn-imge,
+        .zoom-btn,
+        .question-btn,
+        .reset-btn,
+        .image-btn,
+        .fullscreen-close {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            min-width: 180px;
+            padding: 18px 50px;
+            border: 1px solid #031795;
+            border-radius: 60px;
+            background: #f8fafc;
+            color: #031795;
+            font-family: 'Smart Sans', inherit;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .option-btn:hover,
+        .nav-btn:hover,
+        .pulse-button:hover,
+        .side-button:hover,
+        .submit-btn:hover,
+        .clear-btn:hover,
+        .close-btn:hover,
+        .close-btn-imge:hover,
+        .zoom-btn:hover,
+        .question-btn:hover,
+        .reset-btn:hover,
+        .image-btn:hover,
+        .fullscreen-close:hover {
+            background: #031794;
+            color: #fff;
+            border-color: #6B8BDE;
+            transform: translateY(-1px) scale(1.1);
+            box-shadow: 0 8px 20px rgba(29, 78, 216, 0.25);
+        }
+
+        .option-btn:active,
+        .nav-btn:active,
+        .pulse-button:active,
+        .side-button:active,
+        .submit-btn:active,
+        .clear-btn:active,
+        .close-btn:active,
+        .close-btn-imge:active,
+        .zoom-btn:active,
+        .question-btn:active,
+        .reset-btn:active,
+        .image-btn:active,
+        .fullscreen-close:active {
+            transform: translateY(0) scale(1.05);
+            box-shadow: 0 4px 15px rgba(30, 64, 175, 0.2), 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* --- BOTONES DE CIERRE EN CÍRCULO --- */
+        .close-btn,
+        .close-btn-imge,
+        .fullscreen-close {
+            position: absolute;
+            min-width: 0;
+            width: 48px;
+            height: 48px;
+            padding: 0;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            justify-content: center;
+        }
+
+        /* --- FIN ESTILOS UNIFICADOS --- */
+
+        /* --- BOTONES DE MENÚ LATERAL EN CÍRCULO --- */
+        .side-button {
+            min-width: 0;
+            width: 60px;
+            height: 60px;
+            padding: 0;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            justify-content: center;
+        }
+
+        /* --- FIN BOTONES DE MENÚ LATERAL EN CÍRCULO --- */
+
+        /* Animations */
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 0 0 0 rgba(25, 118, 210, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 0 0 20px rgba(25, 118, 210, 0);
+            }
+
+            100% {
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 0 0 0 rgba(25, 118, 210, 0);
+            }
+        }
+
+        /* Modal Overlay */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        /* Modal Container */
+        .modal {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 11px 15px -7px rgba(0, 0, 0, 0.2),
+                0 24px 38px 3px rgba(0, 0, 0, 0.14),
+                0 9px 46px 8px rgba(0, 0, 0, 0.12);
+            max-width: 1100px;
+            width: 95%;
+            max-height: 95vh;
+            overflow: hidden;
+            animation: slideIn 0.3s ease-out;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Close Button */
+        .close-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #031794;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            z-index: 1001;
+            border: 1px solid #6B8BDE;
+            background: #E5EFF9;
+            box-shadow: 0px 4px 19.2px 2px rgba(107, 139, 222, 0.40);
+        }
+
+        .close-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* Modal Header */
+        .modal-header {
+            padding: 24px 24px 20px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .modal-title {
+            font-size: 20px;
+            font-weight: 500;
+            color: #1976d2;
+            margin: 0;
+        }
+
+        /* Modal Body */
+        .modal-body {
+            padding: 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+        }
+
+        .question {
+            padding: 1rem;
+            font-size: 18px;
+            font-weight: 400;
+            color: #212121;
+            margin-bottom: 24px;
+            line-height: 1.5;
+        }
+
+        /* Game Area */
+        .game-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-height: auto;
+        }
+
+        /* Drop Zones */
+        .drop-zones {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .drop-zone {
+            width: 141px;
+            height: 59px;
+            border: 3px dashed #bdbdbd;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #fafafa;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .drop-zone.drag-over {
+            border-color: #1976d2;
+            background-color: #e3f2fd;
+            transform: scale(1.05);
+        }
+
+        .drop-zone.correct {
+            border-color: #4caf50;
+            background-color: #e8f5e8;
+            animation: success 0.6s ease-out;
+        }
+
+        .drop-zone.incorrect {
+            border-color: #f44336;
+            background-color: #ffebee;
+            animation: shake 0.6s ease-out;
+        }
+
+        .drop-zone-label {
+            font-size: 16px;
+            font-weight: 500;
+            color: #757575;
+            margin-bottom: 8px;
+        }
+
+        .drop-zone.filled .drop-zone-label {
+            color: #424242;
+        }
+
+        /* Image Container */
+        .image-container {
+            position: relative;
+            display: inline-block;
+            text-align: center;
+            margin-bottom: 24px;
+            background-color: #fafafa;
+            border-radius: 4px;
+            padding: 16px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .normal-size {
+            max-width: 300px;
+            transition: all 0.3s ease;
+        }
+
+        .fullscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh !important;
+            max-width: 100vw !important;
+            max-height: 100vh !important;
+            object-fit: contain;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1005;
+        }
+
+        .zoom-btn {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 10px;
+            border: 1px solid #6B8BDE;
+            background: #E5EFF9;
+            box-shadow: 0px 4px 19.2px 2px rgba(107, 139, 222, 0.40);
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            min-width: 44px !important;
+            min-height: 44px;
+            max-width: 44px;
+            max-height: 44px;
+            padding: 0 !important;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #031794;
+            z-index: 2;
+            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+        }
+
+        .zoom-btn:hover {
+            transform: translateX(-50%) translateY(0) scale(1) !important;
+            background: #031794;
+            color: #fff;
+            border-color: #6B8BDE;
+            /* No transform ni box-shadow extra para evitar movimiento */
+        }
+
+        .close-btn-imge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: white;
+            background-color: red;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1005;
+        }
+
+        .quiz-image {
+            max-width: 100%;
+            height: auto;
+            max-height: 200px;
+            border-radius: 4px;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 150px;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #757575;
+            font-size: 14px;
+        }
+
+        /* Options Area */
+        .options-area {
+            padding: 16px;
+            z-index: 1002;
+        }
+
+        .options-container {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Draggable Options */
+        .option-item {
+            background-color: #1976d2;
+            color: white;
+            padding: 12px 16px;
+            border-radius: 6px;
+            cursor: grab;
+            user-select: none;
+            transition: all 0.2s ease;
+            font-size: 14px;
+            font-weight: 500;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            min-width: 120px;
+            text-align: center;
+        }
+
+        .option-item:hover {
+            background-color: #1565c0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .option-item.dragging {
+            cursor: grabbing;
+            transform: rotate(5deg) scale(1.05);
+            z-index: 1003;
+            opacity: 0.8;
+        }
+
+        .option-item.used {
+            background-color: #4caf50;
+            cursor: default;
+            transform: none !important;
+        }
+
+        .option-item.returning {
+            animation: returnToPlace 0.5s ease-out;
+        }
+
+        /* Reset Button */
+        .reset-btn {
+            margin: auto;
+            position: relative;
+            border-radius: 50px;
+            border: 1px solid #6B8BDE;
+            background: #E5EFF9;
+            box-shadow: 0px 4px 19.2px 2px rgba(107, 139, 222, 0.40);
+            color: #031794;
+            border: none;
+            padding: 12px 43px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            z-index: 1001;
+        }
+
+        .reset-btn:hover {
+            color: white;
+            border-radius: 50px;
+            border: 1px solid #6B8BDE;
+            background: #031794;
+            box-shadow: 0px 4px 19.2px 2px rgba(107, 139, 222, 0.40);
+            transform: scale(1.05);
+        }
+
+        /* --- ESTILOS UNIFICADOS PARA TODOS LOS BOTONES (IGUAL A .start-button) --- */
+        .option-btn,
+        .nav-btn,
+        .pulse-button,
+        .side-button,
+        .submit-btn,
+        .clear-btn,
+        .close-btn,
+        .close-btn-imge,
+        .zoom-btn,
+        .question-btn,
+        .reset-btn,
+        .image-btn,
+        .fullscreen-close {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            min-width: 180px;
+            padding: 18px 50px;
+            border: 1px solid #031795;
+            border-radius: 60px;
+            background: #f8fafc;
+            color: #031795;
+            font-family: 'Smart Sans', inherit;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .option-btn:hover,
+        .nav-btn:hover,
+        .pulse-button:hover,
+        .side-button:hover,
+        .submit-btn:hover,
+        .clear-btn:hover,
+        .close-btn:hover,
+        .close-btn-imge:hover,
+        .zoom-btn:hover,
+        .question-btn:hover,
+        .reset-btn:hover,
+        .image-btn:hover,
+        .fullscreen-close:hover {
+            background: #031794;
+            color: #fff;
+            border-color: #6B8BDE;
+            transform: translateY(-1px) scale(1.1);
+            box-shadow: 0 8px 20px rgba(29, 78, 216, 0.25);
+        }
+
+        .option-btn:active,
+        .nav-btn:active,
+        .pulse-button:active,
+        .side-button:active,
+        .submit-btn:active,
+        .clear-btn:active,
+        .close-btn:active,
+        .close-btn-imge:active,
+        .zoom-btn:active,
+        .question-btn:active,
+        .reset-btn:active,
+        .image-btn:active,
+        .fullscreen-close:active {
+            transform: translateY(0) scale(1.05);
+            box-shadow: 0 4px 15px rgba(30, 64, 175, 0.2), 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* --- BOTONES DE CIERRE EN CÍRCULO --- */
+        .close-btn,
+        .close-btn-imge,
+        .fullscreen-close {
+            position: absolute;
+            min-width: 0;
+            width: 48px;
+            height: 48px;
+            padding: 0;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            justify-content: center;
+        }
+
+        /* --- FIN ESTILOS UNIFICADOS --- */
+
+        /* --- BOTONES DE MENÚ LATERAL EN CÍRCULO --- */
+        .side-button {
+            min-width: 0;
+            width: 60px;
+            height: 60px;
+            padding: 0;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            justify-content: center;
+        }
+
+        /* --- FIN BOTONES DE MENÚ LATERAL EN CÍRCULO --- */
 
         /* Animations */
         @keyframes slideDown {
@@ -565,50 +1160,777 @@
             }
         }
 
-        /* Responsive */
+        /* Botón Continuar */
+        .start-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            min-width: 180px;
+            padding: 18px 50px;
+            border: 1px solid #031795;
+            border-radius: 60px;
+            background: #f8fafc;
+            color: #031795;
+            font-family: 'Smart Sans', inherit;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            overflow: hidden;
+        }
+
+        .start-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .start-button:hover::before {
+            left: 100%;
+        }
+
+        .start-button:hover {
+            background: #031794;
+            color: #fff;
+            border-color: #6B8BDE;
+            transform: translateY(-1px) scale(1.1);
+            box-shadow: 0 8px 20px rgba(29, 78, 216, 0.25);
+        }
+
+        .start-button:active {
+            transform: translateY(0) scale(1.05);
+            box-shadow: 0 4px 15px rgba(30, 64, 175, 0.2), 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .arrow {
+            transition: transform 0.3s ease;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #e53935;
+            line-height: 1;
+        }
+
+        .start-button:hover .arrow {
+            transform: translateX(3px);
+            color: #fff;
+        }
+
         @media (max-width: 768px) {
-            .modal {
-                width: 98%;
-                max-height: 98vh;
-            }
-
-            .drop-zones {
-                flex-direction: column;
-                align-items: center;
-                gap: 20px;
-            }
-
-            .drop-zone {
-                width: 90%;
-                max-width: 300px;
-            }
-
-            .options-container {
+            .start-button {
+                padding: 15px 35px;
                 gap: 8px;
             }
+        }
 
-            .option-item {
-                min-width: 100px;
-                font-size: 12px;
-                padding: 10px 12px;
+        @media (max-width: 460px) {
+            .start-button {
+                padding: 12px 30px;
+                gap: 6px;
             }
+        }
 
+        /* RESPONSIVE: TABLET */
+        @media (max-width: 1024px) {
             .instruction-box {
-                max-width: 95%;
-                padding: 16px 20px;
+                max-width: 98vw;
+                width: 98vw;
+                padding: 1.2rem 1.2rem;
                 top: 10px;
             }
 
             .instruction-text {
-                font-size: 14px;
+                font-size: 15px;
+            }
+
+            .question-btn {
+                width: 48px;
+                height: 48px;
+                font-size: 26px;
             }
         }
+
+        /* RESPONSIVE: CELULAR */
+        @media (max-width: 600px) {
+            .instruction-box {
+                max-width: 99vw;
+                width: 99vw;
+                padding: 0.7rem 0.7rem;
+                border-radius: 10px;
+                top: 4px;
+            }
+
+            .instruction-text {
+                font-size: 13px;
+                line-height: 1.35;
+            }
+
+            .question-btn {
+                width: 38px;
+                height: 38px;
+                font-size: 20px;
+                bottom: 12px;
+            }
+
+            .modal {
+                max-height: 90vh;
+                overflow-y: auto;
+            }
+        }
+
+        /* Animaciones para la caja de instrucciones */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideOut {
+            from {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            to {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Estilos para la caja de instrucciones */
+        .instruction-box {
+            animation: slideIn 0.5s ease-out;
+        }
+
+        /* Estilos para el botón de pregunta */
+        .question-btn {
+            animation: pulse 2s infinite;
+        }
+
+        /* Audio Control Styles */
+        .audio-control-wrapper {
+            position: fixed;
+            bottom: 1rem;
+            left: 1rem;
+            z-index: 1200;
+        }
+
+        .audio-toggle-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #fff;
+            border: 1px solid #d1d9e6;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .audio-toggle-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .audio-toggle-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: #031795;
+        }
+
+        .audio-controls {
+            position: absolute;
+            bottom: 60px;
+            left: 0;
+            background: #fff;
+            border-radius: 15px;
+            padding: 1rem;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 102, 204, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s;
+            min-width: 280px;
+            z-index: 1001;
+        }
+
+        .audio-controls.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .custom-audio-player {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .audio-main-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .control-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .control-btn:hover {
+            background: rgba(0, 102, 204, 0.1);
+            transform: scale(1.1);
+        }
+
+        .control-btn svg {
+            fill: #031795;
+        }
+
+        .play-pause-btn {
+            width: 50px;
+            height: 50px;
+            background: #031795;
+            border-radius: 50%;
+        }
+
+        .play-pause-btn svg {
+            fill: white;
+            width: 24px;
+            height: 24px;
+        }
+
+        .play-pause-btn:hover {
+            background: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .volume-btn svg,
+        .speed-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .progress-container {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e0e7ef;
+            border-radius: 4px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #6B8BDE;
+            border-radius: 4px;
+            width: 0%;
+            transition: width 0.2s;
+        }
+
+        .time-display {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .volume-slider {
+            width: 80px;
+            height: 6px;
+            background: #e0e7ef;
+            border-radius: 3px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .volume-fill {
+            height: 100%;
+            background: #6B8BDE;
+            border-radius: 3px;
+            width: 100%;
+            transition: width 0.2s;
+        }
+
+        .speed-control {
+            margin-left: 1rem;
+        }
+
+        .speed-display {
+            font-size: 1rem;
+            color: #6B8BDE;
+            font-weight: bold;
+        }
     </style>
+    <!-- Audio Control Component -->
+    <div id="wrapper_audio" class="audio-control-wrapper" style="display: none;">
+        <button class="audio-toggle-btn" id="audioToggle">
+            <svg id="togglePlayIcon" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z" />
+            </svg>
+            <svg id="togglePauseIcon" viewBox="0 0 24 24" style="display: none">
+                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+            </svg>
+        </button>
+        <div class="audio-controls" id="audioControls">
+            <div class="custom-audio-player">
+                <div class="audio-main-controls">
+                    <button class="control-btn volume-btn" id="volumeToggle">
+                        <svg id="volumeIcon" viewBox="0 0 24 24">
+                            <path
+                                d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z" />
+                        </svg>
+                        <svg id="muteIcon" viewBox="0 0 24 24" style="display: none">
+                            <path
+                                d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z" />
+                        </svg>
+                    </button>
+                    <button class="control-btn play-pause-btn" id="playPauseBtn">
+                        <svg id="playIcon" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                        <svg id="pauseIcon" viewBox="0 0 24 24" style="display: none">
+                            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+                        </svg>
+                    </button>
+                    <button class="control-btn speed-btn" id="speedBtn">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M20.38 8.57l-1.23 1.85a8 8 0 0 1-.22 7.58H5.07A8 8 0 0 1 15.58 6.85l1.85-1.23A10 10 0 0 0 3.35 19a2 2 0 0 0 1.72 1h13.85a2 2 0 0 0 1.74-1 10 10 0 0 0-.27-10.44z" />
+                            <path
+                                d="M10.59 15.41a2 2 0 0 0 2.83 0l5.66-5.66a2 2 0 0 0-2.83-2.83L12 11.17 7.76 6.93a2 2 0 0 0-2.83 2.83l5.66 5.65z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar" id="progressBar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="time-display">
+                        <span id="currentTime">0:00</span>
+                        <span id="duration">0:00</span>
+                    </div>
+                </div>
+                <div class="volume-control">
+                    <div class="volume-slider" id="volumeSlider">
+                        <div class="volume-fill" id="volumeFill"></div>
+                    </div>
+                    <div class="speed-control">
+                        <span class="speed-display" id="speedDisplay">1x</span>
+                    </div>
+                </div>
+            </div>
+            <audio id="audioPlayer" preload="metadata">
+                <source src="audio/audio.mp3" type="audio/mp3" />
+                Tu navegador no soporta el elemento de audio.
+            </audio>
+        </div>
+    </div>
+
+    <style>
+        .audio-control-wrapper {
+            position: fixed;
+            bottom: 1rem;
+            left: 1rem;
+            z-index: 1200;
+        }
+
+        .audio-toggle-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #fff;
+            border: 1px solid #d1d9e6;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .audio-toggle-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .audio-toggle-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: #031795;
+        }
+
+        .audio-controls {
+            position: absolute;
+            bottom: 60px;
+            left: 0;
+            background: #fff;
+            border-radius: 15px;
+            padding: 1rem;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 102, 204, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s;
+            min-width: 280px;
+            z-index: 1001;
+        }
+
+        .audio-controls.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .custom-audio-player {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .audio-main-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .control-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .control-btn:hover {
+            background: rgba(0, 102, 204, 0.1);
+            transform: scale(1.1);
+        }
+
+        .control-btn svg {
+            fill: #031795;
+        }
+
+        .play-pause-btn {
+            width: 50px;
+            height: 50px;
+            background: #031795;
+            border-radius: 50%;
+        }
+
+        .play-pause-btn svg {
+            fill: white;
+            width: 24px;
+            height: 24px;
+        }
+
+        .play-pause-btn:hover {
+            background: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .volume-btn svg,
+        .speed-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .progress-container {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e0e7ef;
+            border-radius: 4px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #6B8BDE;
+            border-radius: 4px;
+            width: 0%;
+            transition: width 0.2s;
+        }
+
+        .time-display {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .volume-slider {
+            width: 80px;
+            height: 6px;
+            background: #e0e7ef;
+            border-radius: 3px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .volume-fill {
+            height: 100%;
+            background: #6B8BDE;
+            border-radius: 3px;
+            width: 100%;
+            transition: width 0.2s;
+        }
+
+        .speed-control {
+            margin-left: 1rem;
+        }
+
+        .speed-display {
+            font-size: 1rem;
+            color: #6B8BDE;
+            font-weight: bold;
+        }
+    </style>
+
+    <script>
+        class CustomAudioPlayer {
+            constructor() {
+                this.audioPlayer = document.getElementById('audioPlayer');
+                this.audioToggle = document.getElementById('audioToggle');
+                this.audioControls = document.getElementById('audioControls');
+                this.playPauseBtn = document.getElementById('playPauseBtn');
+                this.volumeToggle = document.getElementById('volumeToggle');
+                this.speedBtn = document.getElementById('speedBtn');
+                this.progressBar = document.getElementById('progressBar');
+                this.progressFill = document.getElementById('progressFill');
+                this.volumeSlider = document.getElementById('volumeSlider');
+                this.volumeFill = document.getElementById('volumeFill');
+                this.currentTimeDisplay = document.getElementById('currentTime');
+                this.durationDisplay = document.getElementById('duration');
+                this.speedDisplay = document.getElementById('speedDisplay');
+
+                this.isControlsVisible = false;
+                this.currentSpeed = 1;
+                this.speeds = [0.5, 0.75, 1, 1.25, 1.5, 2];
+                this.speedIndex = 2; // 1x por defecto
+
+                this.init();
+            }
+
+            init() {
+                this.setupEventListeners();
+                this.audioPlayer.volume = 0.8;
+                this.updateVolumeDisplay();
+
+                // Auto-play si está configurado
+                if (this.audioPlayer.hasAttribute('autoplay')) {
+                    this.audioPlayer.play().catch(e => {
+                        // Puede fallar por autoplay policy
+                    });
+                }
+
+                // Observer para pausar/reproducir según visibilidad
+                const observer = new MutationObserver(() => {
+                    const isVisible = this.audioControls.classList.contains('show');
+                    if (isVisible) {
+                        if (this.audioPlayer.paused) {
+                            this.audioPlayer.play().catch(() => { });
+                        }
+                    } else {
+                        if (!this.audioPlayer.paused) {
+                            this.audioPlayer.pause();
+                        }
+                    }
+                });
+                observer.observe(this.audioControls, { attributes: true, attributeFilter: ['class'] });
+            }
+
+            setupEventListeners() {
+                this.audioToggle.addEventListener('click', () => this.toggleControls());
+                document.addEventListener('click', (e) => this.handleOutsideClick(e));
+                this.playPauseBtn.addEventListener('click', () => this.togglePlayPause());
+                this.audioToggle.addEventListener('dblclick', () => this.togglePlayPause());
+                this.volumeToggle.addEventListener('click', () => this.toggleMute());
+                this.volumeSlider.addEventListener('click', (e) => this.setVolume(e));
+                this.speedBtn.addEventListener('click', () => this.cycleSpeed());
+                this.progressBar.addEventListener('click', (e) => this.setProgress(e));
+                this.audioPlayer.addEventListener('loadedmetadata', () => this.onLoadedMetadata());
+                this.audioPlayer.addEventListener('timeupdate', () => this.onTimeUpdate());
+                this.audioPlayer.addEventListener('play', () => this.onPlay());
+                this.audioPlayer.addEventListener('pause', () => this.onPause());
+                this.audioPlayer.addEventListener('ended', () => this.onEnded());
+            }
+
+            toggleControls() {
+                this.isControlsVisible = !this.isControlsVisible;
+                this.audioControls.classList.toggle('show', this.isControlsVisible);
+            }
+
+            handleOutsideClick(e) {
+                if (!this.audioToggle.contains(e.target) && !this.audioControls.contains(e.target)) {
+                    this.isControlsVisible = false;
+                    this.audioControls.classList.remove('show');
+                }
+            }
+
+            togglePlayPause() {
+                if (this.audioPlayer.paused) {
+                    this.audioPlayer.play();
+                } else {
+                    this.audioPlayer.pause();
+                }
+            }
+
+            toggleMute() {
+                this.audioPlayer.muted = !this.audioPlayer.muted;
+                this.updateVolumeIcon();
+            }
+
+            setVolume(e) {
+                const rect = this.volumeSlider.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const volume = Math.max(0, Math.min(1, clickX / rect.width));
+                this.audioPlayer.volume = volume;
+                this.audioPlayer.muted = false;
+                this.updateVolumeDisplay();
+                this.updateVolumeIcon();
+            }
+
+            cycleSpeed() {
+                this.speedIndex = (this.speedIndex + 1) % this.speeds.length;
+                this.currentSpeed = this.speeds[this.speedIndex];
+                this.audioPlayer.playbackRate = this.currentSpeed;
+                this.speedDisplay.textContent = this.currentSpeed + 'x';
+            }
+
+            setProgress(e) {
+                const rect = this.progressBar.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const percentage = clickX / rect.width;
+                const newTime = percentage * this.audioPlayer.duration;
+                this.audioPlayer.currentTime = newTime;
+            }
+
+            updateVolumeDisplay() {
+                const volume = this.audioPlayer.muted ? 0 : this.audioPlayer.volume;
+                this.volumeFill.style.width = (volume * 100) + '%';
+            }
+
+            updateVolumeIcon() {
+                const volumeIcon = document.getElementById('volumeIcon');
+                const muteIcon = document.getElementById('muteIcon');
+                if (this.audioPlayer.muted || this.audioPlayer.volume === 0) {
+                    volumeIcon.style.display = 'none';
+                    muteIcon.style.display = 'block';
+                } else {
+                    volumeIcon.style.display = 'block';
+                    muteIcon.style.display = 'none';
+                }
+            }
+
+            formatTime(seconds) {
+                if (isNaN(seconds)) return '0:00';
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return mins + ':' + (secs < 10 ? '0' : '') + secs;
+            }
+
+            onLoadedMetadata() {
+                this.durationDisplay.textContent = this.formatTime(this.audioPlayer.duration);
+                this.updateVolumeIcon();
+            }
+
+            onTimeUpdate() {
+                const progress = (this.audioPlayer.currentTime / this.audioPlayer.duration) * 100;
+                this.progressFill.style.width = progress + '%';
+                this.currentTimeDisplay.textContent = this.formatTime(this.audioPlayer.currentTime);
+            }
+
+            onPlay() {
+                document.getElementById('togglePlayIcon').style.display = 'none';
+                document.getElementById('togglePauseIcon').style.display = 'block';
+                document.getElementById('playIcon').style.display = 'none';
+                document.getElementById('pauseIcon').style.display = 'block';
+                this.audioToggle.classList.add('playing');
+            }
+
+            onPause() {
+                document.getElementById('togglePlayIcon').style.display = 'block';
+                document.getElementById('togglePauseIcon').style.display = 'none';
+                document.getElementById('playIcon').style.display = 'block';
+                document.getElementById('pauseIcon').style.display = 'none';
+                this.audioToggle.classList.remove('playing');
+            }
+
+            onEnded() {
+                this.onPause();
+                this.progressFill.style.width = '0%';
+                this.currentTimeDisplay.textContent = '0:00';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            new CustomAudioPlayer();
+        });
+    </script>
+
     <!-- Instruction Box -->
-    <div id="instruccion" style="display: none;" class="instruction-box">
-        <p class="instruction-text">
-            Se requiere realizar el pedido de repuestos de los rodamientos de la bomba de alimentación de molinos, para
-            ello se requiere que se identifiquen el tipo y medidas según la siguiente información:
+    <div id="instruccion" style="display: none;" class="instruction-box animate__animated animate__backInDown">
+        <p id="text_instruccion" class="instruction-text">
+            ¡Bienvenido! En este interactivo podrás identificar el tipo y las medidas de los rodamientos de la bomba de alimentación de molinos.<br>
+            Presiona el botón para visualizar los rodamientos y comenzar la actividad.
         </p>
     </div>
 
@@ -616,8 +1938,8 @@
     <button id="boton" style="display: none;" class="question-btn" onclick="openModal()">?</button>
 
     <div class="modal-overlay" id="modalOverlay">
-        <div class="modal">
-            <button class="close-btn" onclick="closeModal()">&times;</button>
+        <div class="modal animate__animated animate__zoomIn">
+            <button class="close-btn-imge" onclick="closeModal()"><i class="fas fa-times"></i></button>
 
             <div class="modal-body">
                 <div class="question">
@@ -626,42 +1948,17 @@
                 </div>
 
                 <div class="image-container">
-                    <img src="img/rodamiento.jpg" id="rodamientoImg" alt="Diagrama de rodamientos" class="quiz-image"
+                    <img src="img/rodamiento.jpg" id="rodamientoImg" alt="Diagrama de rodamientos"
+                        class="quiz-image normal-size"
                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-                    <button class="zoom-btn" onclick="expandImage()">
+                    <button class="zoom-btn" id="zoomBtn" onclick="expandImage()" style="display: flex;">
                         <i class="fas fa-search"></i>
                     </button>
                     <div class="image-placeholder" style="display: none;">
                         Imagen no disponible<br>
                         <small>Coloque su imagen en: img/rodamiento.jpg</small>
                     </div>
-                    <button class="close-btn-imge" onclick="revertImage()">
-                        <i class="fas fa-times"></i>
-                    </button>
                 </div>
-                <script>
-                    function expandImage() {
-                        const img = document.getElementById('rodamientoImg');
-                        const closeBtn = document.querySelector('.close-btn-imge');
-                        const zoomBtn = document.querySelector('.zoom-btn');
-
-                        img.classList.add('fullscreen');
-                        img.classList.remove('normal-size');
-                        closeBtn.style.display = 'flex';
-                        zoomBtn.style.display = 'none';
-                    }
-
-                    function revertImage() {
-                        const img = document.getElementById('rodamientoImg');
-                        const closeBtn = document.querySelector('.close-btn-imge');
-                        const zoomBtn = document.querySelector('.zoom-btn');
-
-                        img.classList.remove('fullscreen');
-                        img.classList.add('normal-size');
-                        closeBtn.style.display = 'none';
-                        zoomBtn.style.display = 'flex';
-                    }
-                </script>
 
                 <div class="game-area">
                     <div class="drop-zones">
@@ -679,7 +1976,8 @@
                     </div>
                 </div>
                 <!-- Options Area (Fixed at bottom) -->
-                <div class="options-area" id="optionsArea" style="display: none;">
+                <div class="options-area animate__animated animate__lightSpeedInRight" id="optionsArea"
+                    style="display: none;">
                     <div class="options-container">
                         <div class="option-item" draggable="true" data-value="a" ondragstart="dragStart(event)">
                             32956T170/DB
@@ -709,7 +2007,129 @@
 
         </div>
     </div>
+    <button class="close-btn-imge" id="closeBtnImge" onclick="revertImage()"
+        style="display: none; position: absolute; top: 10px; right: 10px; z-index: 1005;">
+        <i class="fas fa-times"></i>
+    </button>
+    <script>
+        function expandImage() {
+            const img = document.getElementById('rodamientoImg');
+            const closeBtn = document.getElementById('closeBtnImge');
+            const zoomBtn = document.getElementById('zoomBtn');
 
+            img.classList.add('fullscreen');
+            img.classList.remove('normal-size');
+            zoomBtn.style.display = 'none';
+            closeBtn.style.display = 'flex';
+        }
+
+        function revertImage() {
+            const img = document.getElementById('rodamientoImg');
+            const closeBtn = document.getElementById('closeBtnImge');
+            const zoomBtn = document.getElementById('zoomBtn');
+
+            img.classList.remove('fullscreen');
+            img.classList.add('normal-size');
+            closeBtn.style.display = 'none';
+            zoomBtn.style.display = 'flex';
+        }
+
+        // Asegura el estado inicial correcto al cargar la página
+        window.addEventListener('DOMContentLoaded', function () {
+            revertImage();
+        });
+    </script>
+
+
+    <button id="start-button" class="start-button" onclick="goToNextPage()">
+        Continuar
+        <span class="arrow">❯</span>
+    </button>
+    <style>
+        .start-button {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            min-width: 180px;
+            padding: 18px 50px;
+            border: 1px solid #031795;
+            border-radius: 60px;
+            background: #f8fafc;
+            color: #031795;
+            font-family: 'Smart Sans', inherit;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            overflow: hidden;
+            z-index: 2000;
+        }
+
+        .start-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .start-button:hover::before {
+            left: 100%;
+        }
+
+        .start-button:hover {
+            background: #031794;
+            color: #fff;
+            border-color: #6B8BDE;
+            transform: translateY(-1px) scale(1.1);
+            box-shadow: 0 8px 20px rgba(29, 78, 216, 0.25);
+        }
+
+        .start-button:active {
+            transform: translateY(0) scale(1.05);
+            box-shadow: 0 4px 15px rgba(30, 64, 175, 0.2), 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .arrow {
+            transition: transform 0.3s ease;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #e53935;
+            line-height: 1;
+        }
+
+        .start-button:hover .arrow {
+            transform: translateX(3px);
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .start-button {
+                padding: 15px 35px;
+                gap: 8px;
+            }
+        }
+
+        @media (max-width: 460px) {
+            .start-button {
+                padding: 12px 30px;
+                gap: 6px;
+            }
+        }
+    </style>
+    <script>
+        function goToNextPage() {
+            window.location.href = '../Interactivo 2/index.html';
+        }
+    </script>
 
     <script>
         let draggedElement = null;
@@ -836,6 +2256,86 @@
                 e.preventDefault();
             }
         });
+
+        // --- DRAG AND DROP TOUCH SUPPORT FOR MOBILE ---
+        (function() {
+            if (window.matchMedia && window.matchMedia('(pointer: coarse)').matches) {
+                let touchDragged = null;
+                let touchOriginZone = null;
+                let touchClone = null;
+                let lastDropZone = null;
+
+                function getDropZoneFromTouch(touch) {
+                    const el = document.elementFromPoint(touch.clientX, touch.clientY);
+                    return el && el.closest('.drop-zone');
+                }
+
+                document.querySelectorAll('.option-item').forEach(item => {
+                    item.addEventListener('touchstart', function(e) {
+                        if (item.classList.contains('used')) return;
+                        touchDragged = item;
+                        touchOriginZone = item.parentElement;
+                        touchClone = item.cloneNode(true);
+                        touchClone.style.position = 'fixed';
+                        touchClone.style.left = e.touches[0].clientX - 50 + 'px';
+                        touchClone.style.top = e.touches[0].clientY - 20 + 'px';
+                        touchClone.style.width = item.offsetWidth + 'px';
+                        touchClone.style.pointerEvents = 'none';
+                        touchClone.style.opacity = '0.8';
+                        touchClone.style.zIndex = 2000;
+                        document.body.appendChild(touchClone);
+                        item.classList.add('dragging');
+                        e.preventDefault();
+                    });
+                });
+
+                document.body.addEventListener('touchmove', function(e) {
+                    if (!touchDragged || !touchClone) return;
+                    const touch = e.touches[0];
+                    touchClone.style.left = (touch.clientX - 50) + 'px';
+                    touchClone.style.top = (touch.clientY - 20) + 'px';
+                    // Highlight drop zone
+                    const dz = getDropZoneFromTouch(touch);
+                    if (lastDropZone && lastDropZone !== dz) {
+                        lastDropZone.classList.remove('drag-over');
+                    }
+                    if (dz && !dz.classList.contains('filled')) {
+                        dz.classList.add('drag-over');
+                        lastDropZone = dz;
+                    } else if (lastDropZone) {
+                        lastDropZone.classList.remove('drag-over');
+                        lastDropZone = null;
+                    }
+                    e.preventDefault();
+                }, { passive: false });
+
+                document.body.addEventListener('touchend', function(e) {
+                    if (!touchDragged || !touchClone) return;
+                    const touch = e.changedTouches[0];
+                    const dz = getDropZoneFromTouch(touch);
+                    if (dz && !dz.classList.contains('filled')) {
+                        // Simular drop
+                        const draggedValue = touchDragged.dataset.value;
+                        const expectedAnswer = dz.dataset.answer;
+                        if (draggedValue === expectedAnswer) {
+                            dz.classList.add('correct', 'filled');
+                            dz.querySelector('.drop-zone-content').innerHTML = touchDragged.innerHTML;
+                            touchDragged.classList.add('used');
+                        } else {
+                            dz.classList.add('incorrect');
+                            setTimeout(() => dz.classList.remove('incorrect'), 600);
+                        }
+                        // Quitar highlight
+                        dz.classList.remove('drag-over');
+                    }
+                    if (touchDragged) touchDragged.classList.remove('dragging');
+                    if (touchClone) document.body.removeChild(touchClone);
+                    touchDragged = null;
+                    touchClone = null;
+                    lastDropZone = null;
+                });
+            }
+        })();
 
         // Animación de salida
         const style = document.createElement('style');
