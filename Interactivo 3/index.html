@@ -173,12 +173,13 @@
 
         /* Columna de botones en el lado derecho */
         .side-menu {
+            margin: 0 auto;
             position: fixed;
-            right: -85px;
-            top: 50%;
-            transform: translateY(-50%);
+            right: 50%;
+            top: 2rem;
+            transform: translateX(50%);
             display: flex;
-            flex-direction: column;
+            flex-direction: unset;
             gap: 20px;
             transition: right 0.4s ease;
             z-index: 999;
@@ -190,10 +191,10 @@
 
         .side-button {
             min-width: 0;
-            padding: 0;
-            width: 60px;
+            padding: 4rem;
+            width: auto;
             height: 60px;
-            border-radius: 50px;
+            border-radius: 15px;
             border: 1px solid #6B8BDE;
             background: #E5EFF9;
             box-shadow: 0px 4px 19.2px 2px rgba(107, 139, 222, 0.40);
@@ -219,7 +220,6 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.6);
             backdrop-filter: blur(5px);
             z-index: 2000;
             animation: fadeIn 0.3s ease;
@@ -2453,7 +2453,6 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.95);
             backdrop-filter: blur(10px);
             z-index: 3000;
             display: none;
@@ -3080,8 +3079,7 @@
             Este proceso se realizará utilizando manguitos de fijación, por lo que es fundamental identificar y reunir
             previamente los datos necesarios para asegurar un montaje correcto y seguro.
 
-            Cuando estés listo, te invitamos a explorar el modelado interactivo de la faja. Además, puedes presionar
-            sobre la faja para visualizar una vista en corte y comprender mejor su estructura interna.
+            Presiona sobre la polea para visualizar una vista en corte.
         </p>
     </div>
 
@@ -3150,13 +3148,13 @@
 
     <div class="side-menu" id="sideMenu">
         <button class="side-button btn-home" data-modal="homeModal" id="btn_home">
-            <i class="fas fa-question-circle"></i>
+            Código de rodamiento
         </button>
         <button class="side-button btn-settings" data-modal="settingsModal" id="btn_settings">
-            <i class="fas fa-calculator"></i>
+            Medida máxima y mínima del eje
         </button>
         <button class="side-button btn-user" data-modal="userModal" id="btn_user">
-            <i class="fas fa-user-circle"></i>
+            Montaje método hidráulico
         </button>
     </div>
 
@@ -3188,6 +3186,75 @@
             pointer-events: none !important;
             box-shadow: none !important;
             animation: none !important;
+        }
+    </style>
+    <!-- Pantalla completa para imagen -->
+    <div class="costado-image" id="costadoImage">
+        <div class="costado-content">
+            <button class="fullscreen-close" id="costadoClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <img id="imagen_original" src="img/1.jpg" alt="Parte Interior del Mecanismo">
+        </div>
+    </div>
+
+    <style>
+        /* Pantalla completa para imagen */
+        .costado-image {
+            position: fixed;
+            bottom: 2rem;
+            RIGHT: 0;
+            width: AUTO;
+            height: AUTO;
+            /* backdrop-filter: blur(10px); */
+            z-index: 1993;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .costado-image.active {
+            display: flex;
+        }
+
+        .costado-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .costado-content img {
+            width: 100%;
+            height: auto;
+            max-height: 70vh;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .costado-close {
+            position: absolute;
+            top: -61px;
+            right: -3px;
+            border-radius: 50px;
+            border: 1px solid #6B8BDE;
+            background: #E5EFF9;
+            box-shadow: 0px 4px 19.2px 2px rgba(107, 139, 222, 0.40);
+            color: #031795;
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .costado-close:hover {
+            transform: scale(1.1) rotate(90deg);
+            box-shadow: 0px 6px 25px 3px rgba(107, 139, 222, 0.50);
         }
     </style>
 
@@ -3270,7 +3337,7 @@
                     <div class="input-group">
                         <label for="medidaMinima">Medida mínima:</label>
                         <div class="input-wrapper">
-                            <input type="number" id="medidaMinima" step="0.001" placeholder="299.989">
+                            <input type="number" id="medidaMinima" step="0.001">
                             <span class="unit">mm</span>
                         </div>
                     </div>
@@ -3278,7 +3345,7 @@
                     <div class="input-group">
                         <label for="medidaMaxima">Medida máxima:</label>
                         <div class="input-wrapper">
-                            <input type="number" id="medidaMaxima" step="0.001" placeholder="300.012">
+                            <input type="number" id="medidaMaxima" step="0.001">
                             <span class="unit">mm</span>
                         </div>
                     </div>
@@ -3334,72 +3401,62 @@
                     }
                 </script>
 
-                <!-- Sección de selección de datos -->
-                <div class="data-selection">
-                    <h3>
-                        <i class="fas fa-check-circle"></i>
-                        Parámetros de Montaje
-                    </h3>
-                    <div class="data-options">
-                        <div class="data-option">
-                            <input type="checkbox" id="juego_min" value="juego_radial_min">
-                            <label for="juego_min">
-                                <span>Juego radial mínimo</span>
-                                <span class="data-value">270 μm</span>
-                            </label>
+                <div class="input-section">
+                    <div class="input-group">
+                        <label for="juegoRadialMinimo">Juego radial mínimo:</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="juegoRadialMinimo" step="0.001">
+                            <span class="unit">μm</span>
                         </div>
-                        <div class="data-option">
-                            <input type="checkbox" id="juego_max" value="juego_radial_max">
-                            <label for="juego_max">
-                                <span>Juego radial máximo</span>
-                                <span class="data-value">360 μm</span>
-                            </label>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="juegoRadialMaximo">Juego radial máximo:</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="juegoRadialMaximo" step="0.001">
+                            <span class="unit">μm</span>
                         </div>
-                        <div class="data-option">
-                            <input type="checkbox" id="calado_min" value="calado_axial_min">
-                            <label for="calado_min">
-                                <span>Calado axial mínimo</span>
-                                <span class="data-value">2.15 mm</span>
-                            </label>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="caladoAxialMinimo">Calado axial mínimo:</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="caladoAxialMinimo" step="0.001">
+                            <span class="unit">μm</span>
                         </div>
-                        <div class="data-option">
-                            <input type="checkbox" id="calado_max" value="calado_axial_max">
-                            <label for="calado_max">
-                                <span>Calado axial máximo</span>
-                                <span class="data-value">2.65 mm</span>
-                            </label>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="caladoAxialMaximo">Calado axial máximo:</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="caladoAxialMaximo" step="0.001">
+                            <span class="unit">μm</span>
                         </div>
-                        <div class="data-option">
-                            <input type="checkbox" id="reduccion_min" value="reduccion_radial_min">
-                            <label for="reduccion_min">
-                                <span>Reducción de juego radial mínima</span>
-                                <span class="data-value">0.15 mm</span>
-                            </label>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="reduccionJuegoMinimo">Reducción de juego radial mínimo:</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="reduccionJuegoMinimo" step="0.001">
+                            <span class="unit">μm</span>
                         </div>
-                        <div class="data-option">
-                            <input type="checkbox" id="reduccion_max" value="reduccion_radial_max">
-                            <label for="reduccion_max">
-                                <span>Reducción de juego radial máximo</span>
-                                <span class="data-value">0.18 mm</span>
-                            </label>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="reduccionJuegoMaximo">Reducción de juego radial máximo:</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="reduccionJuegoMaximo" step="0.001">
+                            <span class="unit">μm</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Botones de acción -->
-                <div class="action-buttons">
-                    <button class="submit-btn" onclick="validateSelection()">
-                        <i class="fas fa-check" style="margin-right: 8px;"></i>
-                        Validar Selección
-                    </button>
-                    <button class="submit-btn" onclick="clearSelection()">
-                        <i class="fas fa-refresh" style="margin-right: 8px;"></i>
-                        Limpiar
-                    </button>
+                <div class="button-group">
+                    <button class="submit-btn" id="submitMedidas2">Verificar Respuestas</button>
+                    <button class="submit-btn" id="clearMedidas2">Limpiar</button>
                 </div>
 
-                <!-- Mensaje de resultado -->
-                <div class="result-message" id="resultMessage"></div>
+                <div class="result-message" id="resultMedidas2" style="display: none;"></div>
             </div>
         </div>
     </div>
@@ -3727,7 +3784,7 @@
                 const radio = option.querySelector('input[type="radio"]');
 
                 if (optionValue === correctAnswer) {
-                    option.classList.add('correct');
+                    //option.classList.add('correct');
                 } else if (radio.checked && optionValue !== correctAnswer) {
                     option.classList.add('incorrect');
                 }
@@ -3737,29 +3794,49 @@
             resultMessage.style.display = 'block';
             if (selectedAnswer === correctAnswer) {
                 resultMessage.className = 'result-message correct';
-                resultMessage.innerHTML = '🎉 ¡Correcto! El rodamiento 23064 CCK/W33 es la respuesta correcta.';
+                resultMessage.innerHTML = '🎉 ¡Correcto!';
             } else {
                 resultMessage.className = 'result-message incorrect';
-                resultMessage.innerHTML = '❌ Incorrecto. La respuesta correcta es el rodamiento <strong>23064 CCK/W33</strong>.';
+                resultMessage.innerHTML = '❌ Incorrecto.';
             }
 
             // Cambiar texto del botón
             submitBtn.textContent = 'Respuesta Enviada';
         });
 
-        // Funcionalidad del formulario de medidas
+        // Funcionalidad del formulario de medidas (sección 1)
         const medidaMinimaInput = document.getElementById('medidaMinima');
         const medidaMaximaInput = document.getElementById('medidaMaxima');
         const submitMedidasBtn = document.getElementById('submitMedidas');
         const clearMedidasBtn = document.getElementById('clearMedidas');
         const resultMedidas = document.getElementById('resultMedidas');
 
-        // Respuestas correctas
+        // Funcionalidad del formulario de medidas (sección 2)
+        const juegoRadialMinimoInput = document.getElementById('juegoRadialMinimo');
+        const juegoRadialMaximoInput = document.getElementById('juegoRadialMaximo');
+        const caladoAxialMinimoInput = document.getElementById('caladoAxialMinimo');
+        const caladoAxialMaximoInput = document.getElementById('caladoAxialMaximo');
+        const reduccionJuegoMinimoInput = document.getElementById('reduccionJuegoMinimo');
+        const reduccionJuegoMaximoInput = document.getElementById('reduccionJuegoMaximo');
+        const submitMedidasBtn2 = document.getElementById('submitMedidas2');
+        const clearMedidasBtn2 = document.getElementById('clearMedidas2');
+        const resultMedidas2 = document.getElementById('resultMedidas2');
+
+        // Respuestas correctas (sección 1)
         const correctMedidaMinima = 299.989;
         const correctMedidaMaxima = 300.012;
-        const tolerance = 0.001; // Tolerancia para comparación de decimales
+        const tolerance = 0.001;
 
-        // Función para validar las medidas
+        // Respuestas correctas (sección 2)
+        const correctJuegoRadialMinimo = 270;
+        const correctJuegoRadialMaximo = 360;
+        const correctCaladoAxialMinimo = 2.15;
+        const correctCaladoAxialMaximo = 2.65;
+        const correctReduccionJuegoMinimo = 0.15;
+        const correctReduccionJuegoMaximo = 0.18;
+        const tolerance2 = 0.001;
+
+        // Función para validar las medidas (sección 1)
         function validateMedidas() {
             const minima = parseFloat(medidaMinimaInput.value);
             const maxima = parseFloat(medidaMaximaInput.value);
@@ -3794,7 +3871,7 @@
                 } else {
                     errorMsg += 'La medida máxima es incorrecta.';
                 }
-                errorMsg += `<br><small>💡 Respuestas correctas: Mínima: ${correctMedidaMinima} mm, Máxima: ${correctMedidaMaxima} mm</small>`;
+                errorMsg += ``;
 
                 return {
                     valid: false,
@@ -3804,30 +3881,124 @@
             }
         }
 
-        // Manejar envío de medidas
-        submitMedidasBtn.addEventListener('click', () => {
-            const result = validateMedidas();
+        // Función para validar las medidas (sección 2)
+        function validateMedidas2() {
+            const juegoRadialMinimo = parseFloat(juegoRadialMinimoInput.value);
+            const juegoRadialMaximo = parseFloat(juegoRadialMaximoInput.value);
+            const caladoAxialMinimo = parseFloat(caladoAxialMinimoInput.value);
+            const caladoAxialMaximo = parseFloat(caladoAxialMaximoInput.value);
+            const reduccionJuegoMinimo = parseFloat(reduccionJuegoMinimoInput.value);
+            const reduccionJuegoMaximo = parseFloat(reduccionJuegoMaximoInput.value);
 
-            resultMedidas.style.display = 'block';
-            resultMedidas.className = `result-message ${result.type || 'incorrect'}`;
-            resultMedidas.innerHTML = result.message;
+            if (isNaN(juegoRadialMinimo) || isNaN(juegoRadialMaximo) ||
+                isNaN(caladoAxialMinimo) || isNaN(caladoAxialMaximo) ||
+                isNaN(reduccionJuegoMinimo) || isNaN(reduccionJuegoMaximo)) {
+                return { valid: false, message: '⚠️ Por favor ingrese valores numéricos válidos en todos los campos.' };
+            }
+
+            const juegoRadialMinimoCorrect = Math.abs(juegoRadialMinimo - correctJuegoRadialMinimo) <= tolerance2;
+            const juegoRadialMaximoCorrect = Math.abs(juegoRadialMaximo - correctJuegoRadialMaximo) <= tolerance2;
+            const caladoAxialMinimoCorrect = Math.abs(caladoAxialMinimo - correctCaladoAxialMinimo) <= tolerance2;
+            const caladoAxialMaximoCorrect = Math.abs(caladoAxialMaximo - correctCaladoAxialMaximo) <= tolerance2;
+            const reduccionJuegoMinimoCorrect = Math.abs(reduccionJuegoMinimo - correctReduccionJuegoMinimo) <= tolerance2;
+            const reduccionJuegoMaximoCorrect = Math.abs(reduccionJuegoMaximo - correctReduccionJuegoMaximo) <= tolerance2;
+
+            // Remover clases anteriores
+            const inputs2 = [juegoRadialMinimoInput, juegoRadialMaximoInput, caladoAxialMinimoInput,
+                caladoAxialMaximoInput, reduccionJuegoMinimoInput, reduccionJuegoMaximoInput];
+            inputs2.forEach(input => input.classList.remove('input-correct', 'input-incorrect'));
+
+            // Aplicar clases según corrección
+            juegoRadialMinimoInput.classList.add(juegoRadialMinimoCorrect ? 'input-correct' : 'input-incorrect');
+            juegoRadialMaximoInput.classList.add(juegoRadialMaximoCorrect ? 'input-correct' : 'input-incorrect');
+            caladoAxialMinimoInput.classList.add(caladoAxialMinimoCorrect ? 'input-correct' : 'input-incorrect');
+            caladoAxialMaximoInput.classList.add(caladoAxialMaximoCorrect ? 'input-correct' : 'input-incorrect');
+            reduccionJuegoMinimoInput.classList.add(reduccionJuegoMinimoCorrect ? 'input-correct' : 'input-incorrect');
+            reduccionJuegoMaximoInput.classList.add(reduccionJuegoMaximoCorrect ? 'input-correct' : 'input-incorrect');
+
+            const allCorrect = juegoRadialMinimoCorrect && juegoRadialMaximoCorrect &&
+                caladoAxialMinimoCorrect && caladoAxialMaximoCorrect &&
+                reduccionJuegoMinimoCorrect && reduccionJuegoMaximoCorrect;
+
+            if (allCorrect) {
+                return {
+                    valid: true,
+                    message: '🎉 ¡Excelente! Todas las medidas son correctas.',
+                    type: 'correct'
+                };
+            } else {
+                let errorMsg = '❌ Algunas medidas son incorrectas.<br>';
+
+                return {
+                    valid: false,
+                    message: errorMsg,
+                    type: 'incorrect'
+                };
+            }
+        }
+
+        // Manejar envío de medidas (sección 1)
+        if (submitMedidasBtn) {
+            submitMedidasBtn.addEventListener('click', () => {
+                const result = validateMedidas();
+                resultMedidas.style.display = 'block';
+                resultMedidas.className = `result-message ${result.type || 'incorrect'}`;
+                resultMedidas.innerHTML = result.message;
+            });
+        }
+
+        // Manejar envío de medidas (sección 2)
+        submitMedidasBtn2.addEventListener('click', () => {
+            const result = validateMedidas2();
+            resultMedidas2.style.display = 'block';
+            resultMedidas2.className = `result-message ${result.type || 'incorrect'}`;
+            resultMedidas2.innerHTML = result.message;
         });
 
-        // Manejar botón limpiar
-        clearMedidasBtn.addEventListener('click', () => {
-            medidaMinimaInput.value = '';
-            medidaMaximaInput.value = '';
-            medidaMinimaInput.classList.remove('input-correct', 'input-incorrect');
-            medidaMaximaInput.classList.remove('input-correct', 'input-incorrect');
-            resultMedidas.style.display = 'none';
-            medidaMinimaInput.focus();
+        // Manejar botón limpiar (sección 1)
+        if (clearMedidasBtn) {
+            clearMedidasBtn.addEventListener('click', () => {
+                medidaMinimaInput.value = '';
+                medidaMaximaInput.value = '';
+                medidaMinimaInput.classList.remove('input-correct', 'input-incorrect');
+                medidaMaximaInput.classList.remove('input-correct', 'input-incorrect');
+                resultMedidas.style.display = 'none';
+                medidaMinimaInput.focus();
+            });
+        }
+
+        // Manejar botón limpiar (sección 2)
+        clearMedidasBtn2.addEventListener('click', () => {
+            const inputs2 = [juegoRadialMinimoInput, juegoRadialMaximoInput, caladoAxialMinimoInput,
+                caladoAxialMaximoInput, reduccionJuegoMinimoInput, reduccionJuegoMaximoInput];
+
+            inputs2.forEach(input => {
+                input.value = '';
+                input.classList.remove('input-correct', 'input-incorrect');
+            });
+
+            resultMedidas2.style.display = 'none';
+            juegoRadialMinimoInput.focus();
         });
 
-        // Resetear validación al escribir
-        [medidaMinimaInput, medidaMaximaInput].forEach(input => {
+        // Resetear validación al escribir (sección 1)
+        if (medidaMinimaInput && medidaMaximaInput) {
+            [medidaMinimaInput, medidaMaximaInput].forEach(input => {
+                input.addEventListener('input', () => {
+                    input.classList.remove('input-correct', 'input-incorrect');
+                    resultMedidas.style.display = 'none';
+                });
+            });
+        }
+
+        // Resetear validación al escribir (sección 2)
+        const inputs2 = [juegoRadialMinimoInput, juegoRadialMaximoInput, caladoAxialMinimoInput,
+            caladoAxialMaximoInput, reduccionJuegoMinimoInput, reduccionJuegoMaximoInput];
+
+        inputs2.forEach(input => {
             input.addEventListener('input', () => {
                 input.classList.remove('input-correct', 'input-incorrect');
-                resultMedidas.style.display = 'none';
+                resultMedidas2.style.display = 'none';
             });
         });
     </script>
