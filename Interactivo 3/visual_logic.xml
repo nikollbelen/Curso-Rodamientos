@@ -1,5 +1,5 @@
 <xml xmlns="http://www.w3.org/1999/xhtml">
-  <tab name="Init" type="InitTab" active="false" scrollx="11.5" scrolly="-275" scale="1">
+  <tab name="Init" type="InitTab" active="false" scrollx="40.5" scrolly="-150" scale="1">
     <block xmlns="https://developers.google.com/blockly/xml" type="initSettings" id=".WsW+TIL$GM+Gbm3KSDH" x="170" y="30">
       <field name="LOAD_COMP_ASSETS">FALSE</field>
       <field name="FULLSCREEN">FALSE</field>
@@ -207,7 +207,7 @@
       </statement>
     </block>
   </tab>
-  <tab name="New Tab" type="CommonTab" active="true" scrollx="-304.9578064379076" scrolly="-41.537525677367626" scale="0.7462153966366275">
+  <tab name="New Tab" type="CommonTab" active="true" scrollx="-128.5284677638747" scrolly="225.50587417516982" scale="0.6548623765145808">
     <variables xmlns="https://developers.google.com/blockly/xml">
       <variable id="g!T%n!b)r?[cHeGu+=f9">primer_cierre</variable>
       <variable id="h`UheR*1s7Gpt$/AAv%}">2</variable>
@@ -215,7 +215,49 @@
       <variable id=",9%fzoyBdpliG+N6ve$X">4</variable>
       <variable id=")QFt)KSN%=2Mt%o]zhie">objeto</variable>
     </variables>
-    <block xmlns="https://developers.google.com/blockly/xml" type="variables_set" id="-rF4_}ABNJkDw5EOs~^_" x="899" y="251">
+    <block xmlns="https://developers.google.com/blockly/xml" type="execScript" id="PGMyzO-^:v{[g}A_qn;w" x="910" y="-270">
+      <value name="TEXT">
+        <shadow type="textMultiline" id="2QsNnZZT*+p@G*!,(f.b">
+          <field name="HIGHLIGHT_MODE">javascript</field>
+          <field name="TEXT" editor-height="30" editor-width="1213.2754366136523">var THREE = v3d;&amp;#10;&amp;#10;function onMouseClick(event) {&amp;#10;    if (!app || !app.scene || !app.renderer || !app.camera) return;&amp;#10;&amp;#10;    // Obtener coordenadas &amp;#10;    var rect = app.renderer.domElement.getBoundingClientRect();&amp;#10;    var mouse = new THREE.Vector2(&amp;#10;        ((event.clientX - rect.left) / rect.width) * 2 - 1,&amp;#10;        -((event.clientY - rect.top) / rect.height) * 2 + 1&amp;#10;    );&amp;#10;&amp;#10;    var raycaster = new THREE.Raycaster();&amp;#10;    raycaster.setFromCamera(mouse, app.camera);&amp;#10;&amp;#10;    // Obtener todos los objetos &amp;#10;    var objects = [];&amp;#10;    app.scene.traverse(function(child) {&amp;#10;        if (child.isMesh) {&amp;#10;            objects.push(child);&amp;#10;        }&amp;#10;    });&amp;#10;&amp;#10;    var intersects = raycaster.intersectObjects(objects, true);&amp;#10;&amp;#10;    if (intersects.length &gt; 0) {&amp;#10;        var object = intersects[0].object;&amp;#10;        var camPos = app.camera.position;&amp;#10;        console.log(`Hiciste clic en: ${object.name}`);&amp;#10;        console.log(`Posición de la cámara: X=${camPos.x.toFixed(2)}, Y=${camPos.y.toFixed(2)}, Z=${camPos.z.toFixed(2)}`);&amp;#10;    }&amp;#10;}&amp;#10;&amp;#10;// Registrar el evento de clic&amp;#10;app.renderer.domElement.addEventListener('click', onMouseClick, false);</field>
+        </shadow>
+      </value>
+    </block>
+    <block xmlns="https://developers.google.com/blockly/xml" type="tweenCameraExt" id="v3ix!eF.oAPAc:8MIMO-" x="290" y="190">
+      <mutation xmlns="http://www.w3.org/1999/xhtml" whenfinishedslot="false"></mutation>
+      <field name="MOVEMENT_TYPE">LINEAR</field>
+      <value name="POSITION">
+        <block type="lists_create_with" id="?rV~V[:htSmTtLNx~].n">
+          <mutation items="3"></mutation>
+          <value name="ADD0">
+            <block type="text" id="bu:%h5m[mjX({)6a5Wc+">
+              <field name="TEXT">6.86</field>
+            </block>
+          </value>
+          <value name="ADD1">
+            <block type="text" id="Ls!d|{=]W9xe[X~rZJY*">
+              <field name="TEXT">7.90</field>
+            </block>
+          </value>
+          <value name="ADD2">
+            <block type="text" id="Jo^C**{W]F_.IX6[9!^|">
+              <field name="TEXT">8.18</field>
+            </block>
+          </value>
+        </block>
+      </value>
+      <value name="LOOKAT">
+        <block type="objectList" id="_teW`H7S9N?mrsyY2a=1">
+          <field name="FIELDNAME">polea de cola.001</field>
+        </block>
+      </value>
+      <value name="DURATION">
+        <shadow type="math_number" id="%K0Ul+ouUjq0rN~-BF!1">
+          <field name="NUM">1</field>
+        </shadow>
+      </value>
+    </block>
+    <block xmlns="https://developers.google.com/blockly/xml" type="variables_set" id="-rF4_}ABNJkDw5EOs~^_" x="908" y="297">
       <field name="VAR" id="g!T%n!b)r?[cHeGu+=f9">primer_cierre</field>
       <value name="VALUE">
         <block type="logic_boolean" id="fJ2?p??lG/Pax-uy5(R}">
@@ -231,7 +273,7 @@
             </block>
           </value>
           <next>
-            <block type="whenHovered" id="pA=YSN|8cbWPp!Zz29aJ" inline="false">
+            <block type="whenHovered" id="pA=YSN|8cbWPp!Zz29aJ" inline="false" disabled="true">
               <mutation xmlns="http://www.w3.org/1999/xhtml" adveventoptions="false"></mutation>
               <field name="X_RAY">FALSE</field>
               <value name="VALUE">
@@ -281,7 +323,7 @@
                 </block>
               </statement>
               <next>
-                <block type="whenClicked" id="m!E!}?HV},m*uFc`f6J5" inline="false">
+                <block type="whenClicked" id="m!E!}?HV},m*uFc`f6J5" inline="false" disabled="true">
                   <mutation xmlns="http://www.w3.org/1999/xhtml" adveventoptions="false" enableifmissed="false"></mutation>
                   <field name="X_RAY">FALSE</field>
                   <field name="DOUBLE_CLICK">FALSE</field>
@@ -1339,6 +1381,206 @@
         </block>
       </next>
     </block>
+    <block xmlns="https://developers.google.com/blockly/xml" type="setTimeout" id="}J~~PdVLt^o`qN45Yz#+" x="1670" y="310">
+      <value name="VALUE">
+        <shadow type="math_number" id="cm-*?FqMh-=2x(7p3twq">
+          <field name="NUM">20</field>
+        </shadow>
+      </value>
+      <statement name="DO">
+        <block type="setHTMLElemStyle" id="A7f_Fn*b6LuTj:e@XaOf">
+          <field name="PROPERTY">display</field>
+          <field name="PARENT">FALSE</field>
+          <value name="VALUE">
+            <block type="text" id="xc4ecW7oa^+DCy+]g?{z">
+              <field name="TEXT">flex</field>
+            </block>
+          </value>
+          <value name="ID">
+            <shadow type="text" id="~`RH5^8x2+m8j?=6p?HQ">
+              <field name="TEXT"></field>
+            </shadow>
+            <block type="text" id="WUglq{Pq-9KZ`utQ7`8m">
+              <field name="TEXT">sideMenu</field>
+            </block>
+          </value>
+          <next>
+            <block type="setHTMLElemStyle" id="224T%^X,h[y)K7E5B1eF">
+              <field name="PROPERTY">display</field>
+              <field name="PARENT">FALSE</field>
+              <value name="VALUE">
+                <block type="text" id="ok3$ey-A`yHX6qVTW.zO">
+                  <field name="TEXT">flex</field>
+                </block>
+              </value>
+              <value name="ID">
+                <shadow type="text" id="~`RH5^8x2+m8j?=6p?HQ">
+                  <field name="TEXT"></field>
+                </shadow>
+                <block type="text" id="%b^rkhzua!~^gbwolr8y">
+                  <field name="TEXT">btn_polea</field>
+                </block>
+              </value>
+              <next>
+                <block type="bindHTMLObject" id=")JAtTg}fR_d*F3,;a@QU">
+                  <field name="PARENT">FALSE</field>
+                  <value name="ID">
+                    <shadow type="text" id="..OSzww9_.(GnoiPBS5`">
+                      <field name="TEXT">btn_polea</field>
+                    </shadow>
+                  </value>
+                  <value name="OBJECTINPUT">
+                    <shadow type="objectList" id="LYPN_)Who9{kpA8cQ5ct">
+                      <field name="FIELDNAME">&lt;none&gt;</field>
+                    </shadow>
+                    <block type="objectList" id="CM8y0hY;PVnMgsyL_Qv[">
+                      <field name="FIELDNAME">polea de cola.001</field>
+                    </block>
+                  </value>
+                </block>
+              </next>
+            </block>
+          </next>
+        </block>
+      </statement>
+    </block>
+    <block xmlns="https://developers.google.com/blockly/xml" type="eventHTMLElem" id="f{kR^8wqW8i;#4dGh%bW" x="1850" y="610">
+      <field name="EVENT">click</field>
+      <field name="PARENT">FALSE</field>
+      <value name="ID">
+        <shadow type="text" id="K_Fstf?a8(p)fIyCu?r%">
+          <field name="TEXT">btn_polea</field>
+        </shadow>
+      </value>
+      <statement name="DO">
+        <block type="controls_if" id="M0QT_[JT0jo8{Uh]r3^]">
+          <value name="IF0">
+            <block type="variables_get" id="EwETdbRva=Vm+0lC4pH9">
+              <field name="VAR" id=")QFt)KSN%=2Mt%o]zhie">objeto</field>
+            </block>
+          </value>
+          <statement name="DO0">
+            <block type="setHTMLElemStyle" id="]zv~G+P-;Xp}WRdB|dx9">
+              <field name="PROPERTY">display</field>
+              <field name="PARENT">FALSE</field>
+              <value name="VALUE">
+                <shadow type="displayDropdown" id="WTfNyB1MzA/w~m}md}ZQ">
+                  <field name="TEXT">block</field>
+                </shadow>
+              </value>
+              <value name="ID">
+                <shadow type="text" id="fvu3$*c/9mk1p,%V.9eJ">
+                  <field name="TEXT">texto_imagen</field>
+                </shadow>
+              </value>
+              <next>
+                <block type="execScript" id="PDu^QySf[:L%RsB!48%K">
+                  <value name="TEXT">
+                    <shadow type="textMultiline" id="f{!XZPkT@rg0mCI+1ts]">
+                      <field name="HIGHLIGHT_MODE">javascript</field>
+                      <field name="TEXT" editor-height="5" editor-width="570">audioPlayer.pause();&amp;#10;</field>
+                    </shadow>
+                  </value>
+                  <next>
+                    <block type="variables_set" id="|4}f~k-{`dP[Cb9fk:0#">
+                      <field name="VAR" id=")QFt)KSN%=2Mt%o]zhie">objeto</field>
+                      <value name="VALUE">
+                        <block type="logic_boolean" id="pXKebcK`QF@1N:i}vare">
+                          <field name="BOOL">FALSE</field>
+                        </block>
+                      </value>
+                      <next>
+                        <block type="setHTMLElemStyle" id="E;GjhUKn!SxgfAL1bV?T">
+                          <field name="PROPERTY">display</field>
+                          <field name="PARENT">FALSE</field>
+                          <value name="VALUE">
+                            <shadow type="displayDropdown" id="vhp~X=`/*_]}{._|hC{]">
+                              <field name="TEXT">none</field>
+                            </shadow>
+                          </value>
+                          <value name="ID">
+                            <shadow type="text" id="(Ai|699Qc%?J7?l^aBzQ">
+                              <field name="TEXT">instruccion</field>
+                            </shadow>
+                          </value>
+                          <next>
+                            <block type="setHTMLElemStyle" id="1(WvCY2J*p|Q38wv9#5U">
+                              <field name="PROPERTY">display</field>
+                              <field name="PARENT">FALSE</field>
+                              <value name="VALUE">
+                                <shadow type="displayDropdown" id="`8IhBWA?ZG4OmfoJ$f`4">
+                                  <field name="TEXT">none</field>
+                                </shadow>
+                              </value>
+                              <value name="ID">
+                                <shadow type="text" id="Ta!f1o7iN,aW1s][,,Gf">
+                                  <field name="TEXT">wrapper_audio</field>
+                                </shadow>
+                              </value>
+                              <next>
+                                <block type="setTimeout" id="W1qxX4Q_Y!w.V7S|HB7p" disabled="true">
+                                  <value name="VALUE">
+                                    <shadow type="math_number" id="mFs#3}_$ARi9V*pH0`BV">
+                                      <field name="NUM">1</field>
+                                    </shadow>
+                                  </value>
+                                  <statement name="DO">
+                                    <block type="setHTMLElemStyle" id="c[}QQ,z[#2.m[j+N;EgL">
+                                      <field name="PROPERTY">display</field>
+                                      <field name="PARENT">FALSE</field>
+                                      <value name="VALUE">
+                                        <shadow type="displayDropdown" id="gPZD9pC%OVs+@i7oW)2i">
+                                          <field name="TEXT">flex</field>
+                                        </shadow>
+                                      </value>
+                                      <value name="ID">
+                                        <shadow type="text" id="L29Hqk{OMeMfx(B$nYsI">
+                                          <field name="TEXT">wrapper_audio</field>
+                                        </shadow>
+                                      </value>
+                                      <next>
+                                        <block type="execScript" id="AK{+yLfcIUf/$z3gb]wP">
+                                          <value name="TEXT">
+                                            <shadow type="textMultiline" id="vz?}x,k-+m.N6wnsSz*1">
+                                              <field name="HIGHLIGHT_MODE">javascript</field>
+                                              <field name="TEXT" editor-height="5" editor-width="570">audioPlayer.src = 'audio/audio2.mp3'; // Cambia la ruta por la que necesites&amp;#10;audioPlayer.play();&amp;#10;</field>
+                                            </shadow>
+                                          </value>
+                                        </block>
+                                      </next>
+                                    </block>
+                                  </statement>
+                                </block>
+                              </next>
+                            </block>
+                          </next>
+                        </block>
+                      </next>
+                    </block>
+                  </next>
+                </block>
+              </next>
+            </block>
+          </statement>
+          <next>
+            <block type="setHTMLElemStyle" id="WF=4Bl`9/_rmUzJ#K4pl">
+              <field name="PROPERTY">display</field>
+              <field name="PARENT">FALSE</field>
+              <value name="VALUE">
+                <shadow type="displayDropdown" id="CPYYUl_|vKy!KH!}2RoQ">
+                  <field name="TEXT">flex</field>
+                </shadow>
+              </value>
+              <value name="ID">
+                <shadow type="text" id="?%K-5H~~#uZaMOftF7R1">
+                  <field name="TEXT">costadoImage</field>
+                </shadow>
+              </value>
+            </block>
+          </next>
+        </block>
+      </statement>
+    </block>
     <block xmlns="https://developers.google.com/blockly/xml" type="variables_set" id="3:(z06o4YMYTc7#s-r-7" x="1810" y="1550">
       <field name="VAR" id="h`UheR*1s7Gpt$/AAv%}">2</field>
       <value name="VALUE">
@@ -1363,7 +1605,7 @@
         </block>
       </value>
     </block>
-    <block xmlns="https://developers.google.com/blockly/xml" type="setHTMLElemStyle" id="Kb*(p0G8mYXzk!VLub`*" x="950" y="3790">
+    <block xmlns="https://developers.google.com/blockly/xml" type="setHTMLElemStyle" id="Kb*(p0G8mYXzk!VLub`*" x="981" y="3839">
       <field name="PROPERTY">display</field>
       <field name="PARENT">FALSE</field>
       <value name="VALUE">

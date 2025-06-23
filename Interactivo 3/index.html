@@ -4,36 +4,9 @@
 <html lang="en">
 
 <head>
-    <title>Verge3D Web Interactive</title>
+    <title>Montaje de rodamiento de polea de faja transportadora</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-
-    <!-- Search Engines -->
-    <meta name="description"
-        content="Interactive 3D Web application made with Verge3D. Immerse yourself in amazing graphics experience offered by state-of-the art WebGL and HTML5 technologies.">
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Verge3D Web Interactive">
-    <meta name="twitter:description"
-        content="Interactive 3D Web application made with Verge3D. Immerse yourself in amazing graphics experience offered by state-of-the art WebGL and HTML5 technologies.">
-    <meta name="twitter:image:src" content="https://cdn.soft8soft.com/images/player_socials.jpg">
-    <!-- Open Graph -->
-    <meta property="og:title" content="Verge3D Web Interactive">
-    <meta property="og:description"
-        content="Interactive 3D Web application made with Verge3D. Immerse yourself in amazing graphics experience offered by state-of-the art WebGL and HTML5 technologies.">
-    <meta property="og:image" content="https://cdn.soft8soft.com/images/player_socials.jpg">
-    <meta property="og:type" content="website">
-
-    <meta name="generator" content="Verge3D 4.8.0">
-
-    <!-- favicons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="media/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="48x48" href="media/favicon-48x48.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="media/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="media/favicon-16x16.png">
-    <link rel="manifest" href="media/manifest.json">
-    <link rel="mask-icon" href="media/safari-pinned-tab.svg" color="#0048a5">
-    <meta name="theme-color" content="#ffffff">
 
     <script src="v3d.js"></script>
     <script src="S.js"></script>
@@ -3085,11 +3058,11 @@
 
     <style>
         .instruction-box {
-            top: 20px;
+            bottom: 26px;
             left: 50%;
             transform: translateX(-50%);
-            max-width: 90%;
-            width: 70%px;
+            max-width: 93%;
+            width: 80%;
             border-left: 4px solid #1976d2;
             z-index: 998;
             animation: slideDown 0.5s ease-out;
@@ -3099,7 +3072,7 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
             transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             cursor: pointer;
-            position: relative;
+            position: absolute;
             overflow: hidden;
             border: 1px solid rgba(226, 232, 240, 0.5);
         }
@@ -3118,7 +3091,6 @@
                 max-width: 98vw;
                 width: 98vw;
                 padding: 1.2rem 1.2rem;
-                top: 10px;
             }
 
             .instruction-text {
@@ -3133,7 +3105,6 @@
                 width: 99vw;
                 padding: 0.7rem 0.7rem;
                 border-radius: 10px;
-                top: 4px;
             }
 
             .instruction-text {
@@ -3146,7 +3117,7 @@
     <!-- Overlay -->
     <div class="overlay" id="overlay"></div>
 
-    <div class="side-menu" id="sideMenu">
+    <div class="side-menu" id="sideMenu" style="display: none;">
         <button class="side-button btn-home" data-modal="homeModal" id="btn_home">
             Código de rodamiento
         </button>
@@ -3158,7 +3129,29 @@
         </button>
     </div>
 
+    <button class="btn-palpitante pulse-blue" id="btn_polea">
+
+    </button>
+
     <style>
+        .btn-palpitante {
+            display: none;
+            position: absolute;
+            width: 2.5rem;
+            height: 2.5rem;
+            background-color: #031795;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 1px solid #6B8BDE;
+            background: #E5EFF9;
+            box-shadow: 0px 4px 19.2px 2px rgba(107, 139, 222, 0.40);
+        }
+
+        .btn-palpitante:hover {
+            background-color: #031795;
+            transform: scale(1.05);
+        }
+
         .pulse-blue {
             animation: pulse-blue 1.3s infinite;
             box-shadow: 0 0 0 0 rgba(33, 150, 243, 0.5);
@@ -3460,90 +3453,6 @@
             </div>
         </div>
     </div>
-
-    <button id="start-button" class="start-button" onclick="goToNextPage()" style="display: none;">
-        Continuar
-        <span class="arrow">❯</span>
-    </button>
-    <style>
-        .start-button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            min-width: 180px;
-            padding: 18px 50px;
-            border: 1px solid #031795;
-            border-radius: 60px;
-            background: #f8fafc;
-            color: #031795;
-            font-family: 'Smart Sans', inherit;
-            font-size: 1.2rem;
-            font-weight: 600;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            cursor: pointer;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-            position: fixed;
-            bottom: 1rem;
-            right: 1rem;
-            overflow: hidden;
-        }
-
-        .start-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.5s;
-        }
-
-        .start-button:hover::before {
-            left: 100%;
-        }
-
-        .start-button:hover {
-            background: #031794;
-            color: #fff;
-            border-color: #6B8BDE;
-            transform: translateY(-1px) scale(1.1);
-            box-shadow: 0 8px 20px rgba(29, 78, 216, 0.25);
-        }
-
-        .start-button:active {
-            transform: translateY(0) scale(1.05);
-            box-shadow: 0 4px 15px rgba(30, 64, 175, 0.2), 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .arrow {
-            transition: transform 0.3s ease;
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #e53935;
-            line-height: 1;
-        }
-
-        .start-button:hover .arrow {
-            transform: translateX(3px);
-            color: #fff;
-        }
-
-        @media (max-width: 768px) {
-            .start-button {
-                padding: 15px 35px;
-                gap: 8px;
-            }
-        }
-
-        @media (max-width: 460px) {
-            .start-button {
-                padding: 12px 30px;
-                gap: 6px;
-            }
-        }
-    </style>
 
     <script>
         // Respuestas correctas (todas las opciones son necesarias)
